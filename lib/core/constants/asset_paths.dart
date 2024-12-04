@@ -14,7 +14,6 @@ class AssetPaths {
   static const String profileSvg = 'assets/svg/profile.svg';
   static const String starSvg = 'assets/svg/star.svg';
 
-  static const String groupImage = 'assets/images/profile.png';
   static const String users = 'assets/svg/users.svg';
   static const String moreVertical = 'assets/svg/more-vertical.svg';
   static const String notification = 'assets/svg/notification.svg';
@@ -23,4 +22,5 @@ class AssetPaths {
   static const String searchSvg = 'assets/svg/search.svg';
   static const String filterSvg = 'assets/svg/filter.svg';
   static const String sliderSvg = 'assets/svg/sliders.svg';
+  static const String profilePicture = 'assets/svg/profile.svg';
 }

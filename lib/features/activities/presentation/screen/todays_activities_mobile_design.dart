@@ -23,11 +23,9 @@ class TodaysActivitiesMobileDesign extends StatelessWidget {
         ),
         actions: [
           const SvgIcon(assetPath: AssetPaths.bellSvg, color: Colors.black),
+          SizedBox(width: 12.w),
+          Image.asset(AssetPaths.profileUser),
           SizedBox(width: 16.w),
-          const SvgIcon(
-            assetPath: AssetPaths.profileSvg,
-            color: Colors.black,
-          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -90,72 +88,72 @@ class BannerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
       decoration: BoxDecoration(
         color: Color(0xFFBAE6FD),
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              BuildText(
-                text: 'You’re close to your goal!',
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w500,
-              ),
-              SizedBox(height: 16.h),
-              BuildText(
-                text: 'Join more sport activities to collect more points',
-                fontSize: 12.sp,
-              ),
-              SizedBox(height: 12.h),
-              Row(
-                children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                    ),
-                    child: BuildText(
-                      text: 'Join now',
-                      fontSize: 12.sp,
-                      color: Colors.white,
-                    ),
-                  ),
-                  SizedBox(width: 8.w),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                    ),
-                    child: BuildText(
-                      text: 'My points',
-                      fontSize: 12.sp,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          SizedBox(width: 5.w),
           Expanded(
-            child: CircularPercentIndicator(
-              radius: 38.r,
-              lineWidth: 8.r,
-              animation: true,
-              percent: 0.5,
-              center: BuildText(
-                text: '27%',
-                fontSize: 25.sp,
-                fontWeight: FontWeight.w500,
-              ),
-              backgroundColor: Colors.white.withOpacity(0.3),
-              progressColor: const Color(0xFF6ABEF6),
-              circularStrokeCap: CircularStrokeCap.round,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                BuildText(
+                  text: 'You’re close to your goal!',
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w500,
+                ),
+                SizedBox(height: 16.h),
+                BuildText(
+                  text: 'Join more sport activities to collect more points',
+                  fontSize: 12.sp,
+                ),
+                SizedBox(height: 12.h),
+                Row(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black,
+                      ),
+                      child: BuildText(
+                        text: 'Join now',
+                        fontSize: 12.sp,
+                        color: Colors.white,
+                      ),
+                    ),
+                    SizedBox(width: 8.w),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black,
+                      ),
+                      child: BuildText(
+                        text: 'My points',
+                        fontSize: 12.sp,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
+          ),
+          CircularPercentIndicator(
+            radius: 38.r,
+            lineWidth: 8.r,
+            animation: true,
+            percent: 0.5,
+            center: BuildText(
+              text: '27%',
+              fontSize: 25.sp,
+              fontWeight: FontWeight.w500,
+            ),
+            backgroundColor: Colors.white.withOpacity(0.3),
+            progressColor: const Color(0xFF6ABEF6),
+            circularStrokeCap: CircularStrokeCap.round,
           )
         ],
       ),
@@ -168,17 +166,28 @@ class SearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 24.w),
+    return Positioned(
+      top: 241.h,
+      left: 24.w,
       child: Container(
         width: 345.w,
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+        height: 41.87.h,
+        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(6.r),
             bottomLeft: Radius.circular(6.r),
+            topRight: Radius.circular(6.r),
+            bottomRight: Radius.circular(6.r),
           ),
+          boxShadow: [
+            BoxShadow(
+              offset: const Offset(3, 3),
+              blurRadius: 8.r,
+              color: const Color(0x1F000000),
+            ),
+          ],
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
