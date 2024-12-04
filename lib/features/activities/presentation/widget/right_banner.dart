@@ -13,6 +13,7 @@ class RightBanner extends StatelessWidget {
       padding: EdgeInsets.all(16),
       child: Column(
         children: [
+          
           const BannerWidget(
             title: 'You’re close to your goal!',
             description: 'Join more sport activities to collect more points',

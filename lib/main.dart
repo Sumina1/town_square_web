@@ -6,6 +6,7 @@ import 'package:townsquare/core/di/locator.dart';
 import 'package:townsquare/core/services/navigation_service.dart';
 import 'package:townsquare/features/activities/domain/repository/activities_repository.dart';
 import 'package:townsquare/features/activities/presentation/cubit/activities_cubit.dart';
+import 'package:flutter/foundation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,8 +24,7 @@ class MyApp extends StatelessWidget {
         getIt<ActivitiesRepository>(),
       )..loadActivities(),
       child: ScreenUtilInit(
-        designSize: const Size(390, 770),
-        minTextAdapt: true,
+  designSize: kIsWeb ? const Size(1400, 1000) : const Size(390, 770),        minTextAdapt: true,
         splitScreenMode: true,
         child: MaterialApp(
           navigatorKey: getIt<NavigationService>().navigatorKey,

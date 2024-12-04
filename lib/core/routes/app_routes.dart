@@ -11,7 +11,7 @@ class AppRoutes {
     switch (settings.name) {
       case initial:
         return MaterialPageRoute(
-          builder: (_) => const TodaysActivitiesMobileDesign(),
+          builder: (_) => const TodaysActivitiesWebdesign(),
         );
 
       case todaysActivitiesWeb:

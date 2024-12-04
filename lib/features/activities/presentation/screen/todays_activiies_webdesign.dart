@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:townsquare/core/widget/text_field.dart';
-import 'package:townsquare/features/activities/presentation/widget/activity_card_wed_design.dart';
+import 'package:townsquare/features/activities/presentation/screen/todays_activities_mobile_design.dart';
+
 import 'package:townsquare/features/activities/presentation/widget/filter_bar.dart';
 
 import 'package:townsquare/features/activities/presentation/widget/right_banner.dart';
@@ -40,7 +41,7 @@ class TodaysActivitiesWebdesign extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                         ),
                         SizedBox(height: 16.h),
-                        const SearchBar(),
+                        // SearchBar(onPressed: () {}),
                         SizedBox(height: 16.h),
                         FilterBar(
                           selectedFilter: state.selectedCategory,
@@ -80,16 +81,16 @@ class TodaysActivitiesWebdesign extends StatelessWidget {
                           else
                             ...state.filteredActivities.map(
                               (activity) => ActivityCard(
-                                time: '${activity.time} (${activity.duration})',
+                                time: activity.time,
                                 activity: activity.title,
                                 location: activity.location,
                                 price: '${activity.price}€',
                                 spotsLeft: '${activity.spotsLeft} spots left',
                                 intensity: activity.intensity,
                                 childcare: activity.childcare,
-                                workspace: activity.workspace,
-                                category: activity.categories.first,
-                                soldOut: activity.spotsLeft == 0,
+                                // workspace: activity.workspace,
+                                // category: activity.categories.first,
+                                soldOut: activity.spotsLeft == 0, duration: activity.duration,
                               ),
                             ),
                         ],
