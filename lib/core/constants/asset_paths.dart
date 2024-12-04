@@ -23,4 +23,5 @@ class AssetPaths {
   static const String filterSvg = 'assets/svg/filter.svg';
   static const String sliderSvg = 'assets/svg/sliders.svg';
   static const String profilePicture = 'assets/svg/profile.svg';
+  static const String imageCircle = 'assets/svg/circle.svg';
 }

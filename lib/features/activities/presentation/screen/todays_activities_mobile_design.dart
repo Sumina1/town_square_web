@@ -15,8 +15,6 @@ class _Constants {
   static const backgroundColor = Color(0xFFFBFBFB);
   static const bannerColor = Color(0xFFBAE6FD);
   static const progressColor = Color(0xFF6ABEF6);
-  static const filterChipSelectedColor = Color(0xFFBAA1C8);
-  static const filterChipBackgroundColor = Color(0xFFEEE1F5);
 
   static const intensityColors = {
     'light': Color(0xFFD5F1FF),
@@ -72,7 +70,7 @@ class TodaysActivitiesView extends StatelessWidget {
                           state.errorMessage ?? 'Error loading activities'))
                   : SingleChildScrollView(
                       child: Padding(
-                        padding: const EdgeInsets.all(16.0),
+                        padding: const EdgeInsets.all(24.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -89,48 +87,121 @@ class TodaysActivitiesView extends StatelessWidget {
                               },
                             ),
                             SizedBox(height: 16.h),
-                            BuildText(
-                              text:
-                                  'Today / ${DateFormat('EEEE').format(DateTime.now()).toLowerCase()}',
-                              fontSize: 14.97.sp,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            SizedBox(height: 8.h),
-                            AnimatedSwitcher(
-                              duration: const Duration(milliseconds: 300),
-                              child: state.filteredActivities.isEmpty
-                                  ? const Center(
-                                      child: Padding(
-                                        padding: EdgeInsets.all(16.0),
-                                        child: Text(
-                                          'No activities available',
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.grey,
-                                          ),
+
+                            // SizedBox(height: 8.h),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(top: 6.h),
+                                  child: Column(
+                                    children: [
+                                      SvgIcon(
+                                        assetPath: AssetPaths.imageCircle,
+                                        size: 10.w,
+                                      ),
+                                      SizedBox(
+                                        height: state.filteredActivities.isEmpty
+                                            ? 50.h
+                                            : state.filteredActivities.length *
+                                                115.h,
+                                        width: 1.w,
+                                        child: CustomPaint(
+                                          painter: DashedLineVerticalPainter(),
                                         ),
                                       ),
-                                    )
-                                  : Column(
-                                      key: ValueKey<String>(
-                                          state.selectedCategory),
-                                      children: state.filteredActivities
-                                          .map((activity) => ActivityCard(
-                                                time:
-                                                    '${activity.time} (${activity.duration})',
-                                                activity: activity.title,
-                                                location: activity.location,
-                                                price:
-                                                    '${activity.price.toStringAsFixed(0)}€',
-                                                spotsLeft:
-                                                    '${activity.spotsLeft} spots left',
-                                                intensity: activity.intensity,
-                                                childcare: activity.childcare,
-                                                soldOut:
-                                                    activity.spotsLeft == 0,
-                                              ))
-                                          .toList(),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(width: 4.w),
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsets.only(left: 8.w),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text.rich(
+                                          TextSpan(
+                                            text: 'Today',
+                                            style: TextStyle(
+                                              fontSize: 14.97.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black,
+                                            ),
+                                            children: [
+                                              TextSpan(
+                                                text:
+                                                    '/${DateFormat('EEEE').format(DateTime.now()).toLowerCase()}',
+                                                style: TextStyle(
+                                                  fontSize: 14.97.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.grey,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        AnimatedSwitcher(
+                                          duration:
+                                              const Duration(milliseconds: 300),
+                                          child: state
+                                                  .filteredActivities.isEmpty
+                                              ? const Center(
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsets.all(16.0),
+                                                    child: Text(
+                                                      'No activities available',
+                                                      style: TextStyle(
+                                                        fontSize: 16,
+                                                        color: Colors.grey,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                )
+                                              : ListView.builder(
+                                                  key: ValueKey<String>(
+                                                      state.selectedCategory),
+                                                  shrinkWrap: true,
+                                                  physics:
+                                                      const NeverScrollableScrollPhysics(),
+                                                  itemCount: state
+                                                      .filteredActivities
+                                                      .length,
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    final activity = state
+                                                            .filteredActivities[
+                                                        index];
+                                                    return ActivityCard(
+                                                      time: activity.time,
+                                                      duration:
+                                                          activity.duration,
+                                                      activity: activity.title,
+                                                      location:
+                                                          activity.location,
+                                                      price:
+                                                          '${activity.price.toStringAsFixed(0)}€',
+                                                      spotsLeft:
+                                                          '${activity.spotsLeft} spots left',
+                                                      intensity:
+                                                          activity.intensity,
+                                                      childcare:
+                                                          activity.childcare,
+                                                      soldOut:
+                                                          activity.spotsLeft ==
+                                                              0,
+                                                    );
+                                                  },
+                                                ),
+                                        ),
+                                      ],
                                     ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -141,6 +212,23 @@ class TodaysActivitiesView extends StatelessWidget {
       },
     );
   }
+}
+
+class DashedLineVerticalPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    double dashHeight = 5, dashSpace = 3, startY = 0;
+    final paint = Paint()
+      ..color = Colors.grey[300]!
+      ..strokeWidth = size.width;
+    while (startY < size.height) {
+      canvas.drawLine(Offset(0, startY), Offset(0, startY + dashHeight), paint);
+      startY += dashHeight + dashSpace;
+    }
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
 
 class BannerWidget extends StatelessWidget {
@@ -155,6 +243,7 @@ class BannerWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
@@ -166,22 +255,34 @@ class BannerWidget extends StatelessWidget {
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w500,
                 ),
-                SizedBox(height: 16.h),
+                SizedBox(height: 7.h),
                 BuildText(
                   text: 'Join more sport activities to collect more points',
                   fontSize: 12.sp,
                 ),
-                SizedBox(height: 12.h),
+                SizedBox(height: 10.h),
                 Row(
                   children: [
                     ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 8.w, vertical: 4.h),
+                        minimumSize: Size(63.w, 22.h),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(4.r),
+                            bottomLeft: Radius.circular(4.r),
+                            topRight: Radius.circular(4.r),
+                            bottomRight: Radius.circular(4.r),
+                          ),
+                        ),
                       ),
                       child: BuildText(
                         text: 'Join now',
                         fontSize: 12.sp,
+                        fontWeight: FontWeight.w500,
                         color: Colors.white,
                       ),
                     ),
@@ -190,11 +291,23 @@ class BannerWidget extends StatelessWidget {
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 8.w, vertical: 4.h),
+                        minimumSize: Size(63.w, 22.h),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(4.r),
+                            bottomLeft: Radius.circular(4.r),
+                            topRight: Radius.circular(4.r),
+                            bottomRight: Radius.circular(4.r),
+                          ),
+                        ),
                       ),
                       child: BuildText(
                         text: 'My points',
                         fontSize: 12.sp,
                         color: Colors.white,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ],
@@ -212,7 +325,7 @@ class BannerWidget extends StatelessWidget {
               fontSize: 25.sp,
               fontWeight: FontWeight.w500,
             ),
-            backgroundColor: Colors.white.withOpacity(0.3),
+            backgroundColor: const Color(0xFFFFFFFF),
             progressColor: _Constants.progressColor,
             circularStrokeCap: CircularStrokeCap.round,
           )
@@ -265,56 +378,6 @@ class SearchBar extends StatelessWidget {
   }
 }
 
-// class FilterBar extends StatelessWidget {
-//   final String selectedFilter;
-//   final Function(String) onFilterSelected;
-
-//   const FilterBar({
-//     super.key,
-//     required this.selectedFilter,
-//     required this.onFilterSelected,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final filters = [
-//       'All',
-//       'Sports',
-//       'Food',
-//       'Kids',
-//       'Creative',
-//     ];
-
-//     return SingleChildScrollView(
-//       scrollDirection: Axis.horizontal,
-//       child: Row(
-//         children: filters
-//             .map((filter) => Padding(
-//                   padding: EdgeInsets.only(right: 8.w),
-//                   child: FilterChip(
-//                     selected: selectedFilter == filter,
-//                     selectedColor: _Constants.filterChipSelectedColor,
-//                     label: BuildText(
-//                       text: filter,
-//                       fontSize: 12.sp,
-//                       color: Colors.black,
-//                     ),
-//                     backgroundColor: _Constants.filterChipBackgroundColor,
-//                     shape: RoundedRectangleBorder(
-//                       borderRadius: BorderRadius.circular(6.r),
-//                     ),
-//                     padding:
-//                         EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
-//                     onSelected: (_) => onFilterSelected(
-//                         selectedFilter == filter ? 'All' : filter),
-//                   ),
-//                 ))
-//             .toList(),
-//       ),
-//     );
-//   }
-// }
-
 class ActivityCard extends StatelessWidget {
   final String time;
   final String activity;
@@ -322,6 +385,7 @@ class ActivityCard extends StatelessWidget {
   final String price;
   final String spotsLeft;
   final String intensity;
+  final String duration;
   final bool childcare;
   final bool soldOut;
 
@@ -333,6 +397,7 @@ class ActivityCard extends StatelessWidget {
     required this.price,
     required this.spotsLeft,
     required this.intensity,
+    required this.duration,
     this.childcare = false,
     this.soldOut = false,
   });
@@ -359,15 +424,24 @@ class ActivityCard extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              BuildText(
-                text: time,
-                fontSize: 12.sp,
+              Text.rich(
+                TextSpan(
+                  text: time,
+                  style:
+                      TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500),
+                  children: [
+                    TextSpan(
+                      text: ' ($duration)',
+                      style: TextStyle(fontSize: 12.sp, color: Colors.grey),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(height: 4.w),
               BuildText(
                 text: activity,
                 fontSize: 14.sp,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w700,
               ),
               SizedBox(height: 4.w),
               Row(
@@ -381,6 +455,7 @@ class ActivityCard extends StatelessWidget {
                   BuildText(
                     text: location,
                     fontSize: 12.sp,
+                    fontWeight: FontWeight.w500,
                     color: Colors.grey,
                   ),
                 ],
@@ -407,6 +482,7 @@ class ActivityCard extends StatelessWidget {
                           text: spotsLeft,
                           fontSize: 10.sp,
                           color: Colors.grey,
+                          fontWeight: FontWeight.w500,
                         ),
                       ],
                     ),

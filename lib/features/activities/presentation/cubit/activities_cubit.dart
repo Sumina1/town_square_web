@@ -11,8 +11,6 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
 
   ActivitiesCubit(this._repository) : super(const ActivitiesState());
 
-  final List<String> categories = ['All', 'Sports', 'Food', 'Kids', 'Creative'];
-
   Future<void> loadActivities() async {
     emit(state.copyWith(status: ActivitiesStatus.loading));
 
