@@ -13,40 +13,40 @@ class FilterBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        FilterChip(
-          label: const Text('All'),
-          selected: selectedFilter == 'all',
-          onSelected: (_) => onFilterSelected('all'),
-          backgroundColor: Colors.white,
-          selectedColor: Colors.black12,
-        ),
-        SizedBox(width: 8.w),
-        FilterChip(
-          label: const Text('Sports'),
-          selected: selectedFilter == 'Sports',
-          onSelected: (_) => onFilterSelected('Sports'),
-        ),
-        SizedBox(width: 8.w),
-        FilterChip(
-          label: const Text('Food'),
-          selected: selectedFilter == 'Food',
-          onSelected: (_) => onFilterSelected('Food'),
-        ),
-        SizedBox(width: 8.w),
-        FilterChip(
-          label: const Text('Kids'),
-          selected: selectedFilter == 'Kids',
-          onSelected: (_) => onFilterSelected('Kids'),
-        ),
-        SizedBox(width: 8.w),
-        FilterChip(
-          label: const Text('Creative'),
-          selected: selectedFilter == 'Creative',
-          onSelected: (_) => onFilterSelected('Creative'),
-        ),
-      ],
+    final filters = ['all', 'Sports', 'Food', 'Kids', 'Creative'];
+
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: filters.map((filter) {
+          final isSelected =
+              selectedFilter.toLowerCase() == filter.toLowerCase();
+          return Padding(
+            padding: EdgeInsets.only(right: 8.w),
+            child: AnimatedScale(
+              duration: const Duration(milliseconds: 200),
+              scale: isSelected ? 1.05 : 1.0,
+              child: FilterChip(
+                selected: isSelected,
+                selectedColor: const Color(0xFFBAA1C8),
+                label: Text(filter == 'all' ? 'All' : filter),
+                backgroundColor: const Color(0xFFEEE1F5),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(6.r),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+                onSelected: (_) {
+                  if (isSelected) {
+                    onFilterSelected('all');
+                  } else {
+                    onFilterSelected(filter);
+                  }
+                },
+              ),
+            ),
+          );
+        }).toList(),
+      ),
     );
   }
 }

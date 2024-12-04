@@ -9,6 +9,7 @@ import 'package:townsquare/core/widget/text_field.dart';
 import 'package:townsquare/core/widgets/svg_icon.dart';
 
 import 'package:townsquare/features/activities/presentation/cubit/activities_cubit.dart';
+import 'package:townsquare/features/activities/presentation/widget/filter_bar.dart';
 
 class _Constants {
   static const backgroundColor = Color(0xFFFBFBFB);
@@ -264,55 +265,55 @@ class SearchBar extends StatelessWidget {
   }
 }
 
-class FilterBar extends StatelessWidget {
-  final String selectedFilter;
-  final Function(String) onFilterSelected;
+// class FilterBar extends StatelessWidget {
+//   final String selectedFilter;
+//   final Function(String) onFilterSelected;
 
-  const FilterBar({
-    super.key,
-    required this.selectedFilter,
-    required this.onFilterSelected,
-  });
+//   const FilterBar({
+//     super.key,
+//     required this.selectedFilter,
+//     required this.onFilterSelected,
+//   });
 
-  @override
-  Widget build(BuildContext context) {
-    final filters = [
-      'All',
-      'Sports',
-      'Food',
-      'Kids',
-      'Creative',
-    ];
+//   @override
+//   Widget build(BuildContext context) {
+//     final filters = [
+//       'All',
+//       'Sports',
+//       'Food',
+//       'Kids',
+//       'Creative',
+//     ];
 
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: filters
-            .map((filter) => Padding(
-                  padding: EdgeInsets.only(right: 8.w),
-                  child: FilterChip(
-                    selected: selectedFilter == filter,
-                    selectedColor: _Constants.filterChipSelectedColor,
-                    label: BuildText(
-                      text: filter,
-                      fontSize: 12.sp,
-                      color: Colors.black,
-                    ),
-                    backgroundColor: _Constants.filterChipBackgroundColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6.r),
-                    ),
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
-                    onSelected: (_) => onFilterSelected(
-                        selectedFilter == filter ? 'All' : filter),
-                  ),
-                ))
-            .toList(),
-      ),
-    );
-  }
-}
+//     return SingleChildScrollView(
+//       scrollDirection: Axis.horizontal,
+//       child: Row(
+//         children: filters
+//             .map((filter) => Padding(
+//                   padding: EdgeInsets.only(right: 8.w),
+//                   child: FilterChip(
+//                     selected: selectedFilter == filter,
+//                     selectedColor: _Constants.filterChipSelectedColor,
+//                     label: BuildText(
+//                       text: filter,
+//                       fontSize: 12.sp,
+//                       color: Colors.black,
+//                     ),
+//                     backgroundColor: _Constants.filterChipBackgroundColor,
+//                     shape: RoundedRectangleBorder(
+//                       borderRadius: BorderRadius.circular(6.r),
+//                     ),
+//                     padding:
+//                         EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+//                     onSelected: (_) => onFilterSelected(
+//                         selectedFilter == filter ? 'All' : filter),
+//                   ),
+//                 ))
+//             .toList(),
+//       ),
+//     );
+//   }
+// }
 
 class ActivityCard extends StatelessWidget {
   final String time;
