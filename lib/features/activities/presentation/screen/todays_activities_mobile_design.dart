@@ -50,10 +50,32 @@ class TodaysActivitiesView extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
-            title: BuildText(
-              text: 'This week in Estepona',
-              fontSize: 20.sp,
-              fontWeight: FontWeight.w500,
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    BuildText(
+                      text: DateFormat('EEEE').format(DateTime.now()),
+                      fontSize: 14.97.sp,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.grey,
+                    ),
+                    BuildText(
+                      text: ', ${DateFormat('MMM d').format(DateTime.now())}',
+                      fontSize: 14.97.sp,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.grey,
+                    ),
+                  ],
+                ),
+                SizedBox(height: 4.h),
+                BuildText(
+                  text: 'This week in Estepona',
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.w500,
+                ),
+              ],
             ),
             actions: [
               const SvgIcon(assetPath: AssetPaths.bellSvg, color: Colors.black),
@@ -62,151 +84,172 @@ class TodaysActivitiesView extends StatelessWidget {
               SizedBox(width: 16.w),
             ],
           ),
-          body: state.status == ActivitiesStatus.loading
-              ? const Center(child: CircularProgressIndicator())
-              : state.status == ActivitiesStatus.failure
-                  ? Center(
-                      child: Text(
-                          state.errorMessage ?? 'Error loading activities'))
-                  : SingleChildScrollView(
-                      child: Padding(
-                        padding: const EdgeInsets.all(24.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const BannerWidget(),
-                            SizedBox(height: 16.h),
-                            const SearchBar(),
-                            SizedBox(height: 16.h),
-                            FilterBar(
-                              selectedFilter: state.selectedCategory,
-                              onFilterSelected: (filter) {
-                                context
-                                    .read<ActivitiesCubit>()
-                                    .changeCategory(filter);
-                              },
-                            ),
-                            SizedBox(height: 16.h),
-
-                            // SizedBox(height: 8.h),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                left: 24.0,
+                right: 24.0,
+                bottom: 24.0,
+                top: 18.0,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // BuildText(
+                  //   text: 'This week in Estepona',
+                  //   fontSize: 20.sp,
+                  //   fontWeight: FontWeight.w500,
+                  // ),
+                  // SizedBox(height: 18.h),
+                  state.status == ActivitiesStatus.loading
+                      ? const Center(child: CircularProgressIndicator())
+                      : state.status == ActivitiesStatus.failure
+                          ? Center(
+                              child: Text(state.errorMessage ??
+                                  'Error loading activities'))
+                          : Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Padding(
-                                  padding: EdgeInsets.only(top: 6.h),
-                                  child: Column(
-                                    children: [
-                                      SvgIcon(
-                                        assetPath: AssetPaths.imageCircle,
-                                        size: 10.w,
-                                      ),
-                                      SizedBox(
-                                        height: state.filteredActivities.isEmpty
-                                            ? 50.h
-                                            : state.filteredActivities.length *
-                                                115.h,
-                                        width: 1.w,
-                                        child: CustomPaint(
-                                          painter: DashedLineVerticalPainter(),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                const BannerWidget(),
+                                SizedBox(height: 16.h),
+                                const SearchBar(),
+                                SizedBox(height: 16.h),
+                                FilterBar(
+                                  selectedFilter: state.selectedCategory,
+                                  onFilterSelected: (filter) {
+                                    context
+                                        .read<ActivitiesCubit>()
+                                        .changeCategory(filter);
+                                  },
                                 ),
-                                SizedBox(width: 4.w),
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsets.only(left: 8.w),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text.rich(
-                                          TextSpan(
-                                            text: 'Today',
-                                            style: TextStyle(
-                                              fontSize: 14.97.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black,
+                                SizedBox(height: 16.h),
+
+                                // SizedBox(height: 8.h),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(top: 6.h),
+                                      child: Column(
+                                        children: [
+                                          SvgIcon(
+                                            assetPath: AssetPaths.imageCircle,
+                                            size: 10.w,
+                                          ),
+                                          SizedBox(
+                                            height:
+                                                state.filteredActivities.isEmpty
+                                                    ? 50.h
+                                                    : state.filteredActivities
+                                                            .length *
+                                                        115.h,
+                                            width: 1.w,
+                                            child: CustomPaint(
+                                              painter:
+                                                  DashedLineVerticalPainter(),
                                             ),
-                                            children: [
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(width: 4.w),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsets.only(left: 8.w),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text.rich(
                                               TextSpan(
-                                                text:
-                                                    '/${DateFormat('EEEE').format(DateTime.now()).toLowerCase()}',
+                                                text: 'Today/',
                                                 style: TextStyle(
                                                   fontSize: 14.97.sp,
                                                   fontWeight: FontWeight.w500,
-                                                  color: Colors.grey,
+                                                  color: Colors.black,
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        AnimatedSwitcher(
-                                          duration:
-                                              const Duration(milliseconds: 300),
-                                          child: state
-                                                  .filteredActivities.isEmpty
-                                              ? const Center(
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsets.all(16.0),
-                                                    child: Text(
-                                                      'No activities available',
-                                                      style: TextStyle(
-                                                        fontSize: 16,
-                                                        color: Colors.grey,
-                                                      ),
+                                                children: [
+                                                  TextSpan(
+                                                    text: DateFormat('EEEE')
+                                                        .format(DateTime.now()),
+                                                    style: TextStyle(
+                                                      fontSize: 12.sp,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: Colors.grey,
                                                     ),
                                                   ),
-                                                )
-                                              : ListView.builder(
-                                                  key: ValueKey<String>(
-                                                      state.selectedCategory),
-                                                  shrinkWrap: true,
-                                                  physics:
-                                                      const NeverScrollableScrollPhysics(),
-                                                  itemCount: state
-                                                      .filteredActivities
-                                                      .length,
-                                                  itemBuilder:
-                                                      (context, index) {
-                                                    final activity = state
-                                                            .filteredActivities[
-                                                        index];
-                                                    return ActivityCard(
-                                                      time: activity.time,
-                                                      duration:
-                                                          activity.duration,
-                                                      activity: activity.title,
-                                                      location:
-                                                          activity.location,
-                                                      price:
-                                                          '${activity.price.toStringAsFixed(0)}€',
-                                                      spotsLeft:
-                                                          '${activity.spotsLeft} spots left',
-                                                      intensity:
-                                                          activity.intensity,
-                                                      childcare:
-                                                          activity.childcare,
-                                                      soldOut:
-                                                          activity.spotsLeft ==
+                                                ],
+                                              ),
+                                            ),
+                                            AnimatedSwitcher(
+                                              duration: const Duration(
+                                                  milliseconds: 300),
+                                              child: state.filteredActivities
+                                                      .isEmpty
+                                                  ? const Center(
+                                                      child: Padding(
+                                                        padding: EdgeInsets.all(
+                                                            16.0),
+                                                        child: Text(
+                                                          'No activities available',
+                                                          style: TextStyle(
+                                                            fontSize: 16,
+                                                            color: Colors.grey,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    )
+                                                  : ListView.builder(
+                                                      key: ValueKey<String>(state
+                                                          .selectedCategory),
+                                                      shrinkWrap: true,
+                                                      physics:
+                                                          const NeverScrollableScrollPhysics(),
+                                                      itemCount: state
+                                                          .filteredActivities
+                                                          .length,
+                                                      itemBuilder:
+                                                          (context, index) {
+                                                        final activity = state
+                                                                .filteredActivities[
+                                                            index];
+                                                        return ActivityCard(
+                                                          time: activity.time,
+                                                          duration:
+                                                              activity.duration,
+                                                          activity:
+                                                              activity.title,
+                                                          location:
+                                                              activity.location,
+                                                          price:
+                                                              '${activity.price.toStringAsFixed(0)}€',
+                                                          spotsLeft:
+                                                              '${activity.spotsLeft} spots left',
+                                                          intensity: activity
+                                                              .intensity,
+                                                          childcare: activity
+                                                              .childcare,
+                                                          soldOut: activity
+                                                                  .spotsLeft ==
                                                               0,
-                                                    );
-                                                  },
-                                                ),
+                                                        );
+                                                      },
+                                                    ),
+                                            ),
+                                          ],
                                         ),
-                                      ],
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 ),
                               ],
                             ),
-                          ],
-                        ),
-                      ),
-                    ),
+                ],
+              ),
+            ),
+          ),
           bottomNavigationBar: const MenuBar(),
         );
       },
@@ -584,9 +627,9 @@ class MenuBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomAppBar(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
               icon: const SvgIcon(
