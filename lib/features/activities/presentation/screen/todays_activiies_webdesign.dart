@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:townsquare/core/widget/text_field.dart';
 import 'package:townsquare/features/activities/presentation/widget/activity_card_wed_design.dart';
 import 'package:townsquare/features/activities/presentation/widget/filter_bar.dart';
 
@@ -19,27 +20,30 @@ class TodaysActivitiesWebdesign extends StatelessWidget {
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding:  EdgeInsets.all(16.r),
+                padding: EdgeInsets.all(16.r),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                  const   Text(
-          'Tues, Nov 12',
-          style: TextStyle(fontSize: 14, color: Color(0xFF9E9E9E)),
-        ),
-        SizedBox(height: 4.h),
-        Text(
-          'This week in Estepona',
-          style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.w500),
-        ),
+                    BuildText(
+                      text: 'Tues, Nov 12',
+                      fontSize: 14.sp,
+                      color: const Color(0xFF9E9E9E),
+                    ),
+                    SizedBox(height: 4.h),
+                    BuildText(
+                      text: 'This week in Estepona',
+                      fontSize: 24.sp,
+                      fontWeight: FontWeight.w500,
+                    ),
                     SizedBox(height: 16.h),
-                  const  SearchBar(),
+                    const SearchBar(),
                     SizedBox(height: 16.h),
                     const FilterBar(),
                     SizedBox(height: 16.h),
-                    Text(
-                      'Today / tuesday',
-                      style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
+                    BuildText(
+                      text: 'Today / tuesday',
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w500,
                     ),
                     SizedBox(height: 8.h),
                     ActivityCard(
@@ -98,17 +102,9 @@ class TodaysActivitiesWebdesign extends StatelessWidget {
               ),
             ),
           ),
-       const   RightBanner(),
+          const RightBanner(),
         ],
       ),
     );
   }
 }
-
-
-
-
-
-
-
-

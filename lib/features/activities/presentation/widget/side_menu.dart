@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:townsquare/core/constants/asset_paths.dart';
+import 'package:townsquare/core/widget/text_field.dart';
 import 'package:townsquare/core/widgets/svg_icon.dart';
 import 'package:townsquare/features/activities/presentation/widget/menu_option.dart';
 
@@ -16,8 +17,9 @@ class SideMenu extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(AssetPaths.logo, ),
-         
+          Image.asset(
+            AssetPaths.logo,
+          ),
           SizedBox(height: 60.h),
           MenuOption(icon: AssetPaths.calendarSvg, label: 'Activities'),
           MenuOption(icon: AssetPaths.mapSvg, label: 'Locations'),
@@ -27,10 +29,10 @@ class SideMenu extends StatelessWidget {
           SizedBox(height: 20.h),
           ElevatedButton.icon(
             onPressed: () {},
-            icon: Icon(Icons.add),
-            label: Text('Create'),
+            icon: const Icon(Icons.add),
+            label: const BuildText(text: 'Create'),
             style: ElevatedButton.styleFrom(
-              primary: Color(0xFF76C8FF),
+              backgroundColor: const Color(0xFF76C8FF),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(25.r),
               ),
@@ -40,18 +42,22 @@ class SideMenu extends StatelessWidget {
           ),
           SizedBox(height: 20.h),
           Row(
-           crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-         Image.asset(AssetPaths.profileUser, height: 36.h, width: 36.w),
-          SizedBox(width: 16.w),
-          Text(
-            'Profile',
-            style: TextStyle(color: Colors.white, fontSize: 20.sp),
+              Image.asset(AssetPaths.profileUser, height: 36.h, width: 36.w),
+              SizedBox(width: 16.w),
+              BuildText(
+                text: 'Profile',
+                color: Colors.white,
+                fontSize: 20.sp,
+              ),
+              SizedBox(width: 20.w),
+              SvgIcon(
+                assetPath: AssetPaths.moreVertical,
+                size: 24.w,
+              ),
+            ],
           ),
-           SizedBox(width: 20.w),
-          SvgIcon(assetPath: AssetPaths.moreVertical, size: 24.w,),
-        ],
-      ),
         ],
       ),
     );

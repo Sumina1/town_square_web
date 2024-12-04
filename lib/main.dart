@@ -2,14 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:townsquare/core/routes/app_routes.dart';
 
-import 'package:townsquare/features/activities/presentation/screen/todays_activiies_webdesign.dart';
-
-
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 void main() async {
-
-  
-
-  
   runApp(const MyApp());
 }
 
@@ -19,25 +13,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize:  Size(1900, 1500),
+      designSize: const Size(390, 770),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: true,
-          title: 'TownSquare',
-          
-          theme: ThemeData(
-            fontFamily: 'Poppins',
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: true,
+      child: MaterialApp(
+        navigatorKey: navigatorKey,
+        theme: ThemeData(
+          appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
+          colorScheme: ColorScheme.fromSwatch(
+            accentColor: const Color(0xFF13B9FF),
           ),
-          home: child,
-          initialRoute: AppRoutes.initial,
-        );
-      },
-      child: const TodaysActivitiesWebdesign(),
+          textTheme: Theme.of(context).textTheme.apply(
+                fontFamily: 'SF Pro Display',
+              ),
+          primaryColor: const Color(0xFF13B9FF),
+        ),
+        initialRoute: AppRoutes.initial,
+        onGenerateRoute: AppRoutes.onGenerateRoute,
+      ),
     );
   }
 }
-

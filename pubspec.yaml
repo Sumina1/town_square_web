@@ -48,6 +48,7 @@ dependencies:
 
   # Storage
   shared_preferences: ^2.2.2
+  percent_indicator: ^4.2.4
 
 
   # UI Components
@@ -81,7 +82,7 @@ dev_dependencies:
   injectable_generator: ^2.4.1
   hive_generator: ^2.0.1
   flutter_gen_runner: ^5.4.0
-  percent_indicator: ^4.2.4
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -99,8 +100,6 @@ flutter:
     # Images
     - assets/images/
     - assets/svg/
-    - assets/images/logo.png
-    - assets/images/profile.png
     
     # # Icons
     # - assets/icons/
@@ -111,13 +110,6 @@ flutter:
     # - assets/animations/
 
   # Fonts
-  fonts:
-    - family: Poppins
-      # fonts:
-      #   - asset: assets/fonts/Poppins-Regular.ttf
-      #   - asset: assets/fonts/Poppins-Medium.ttf
-      #     weight: 500
-      #   - asset: assets/fonts/Poppins-SemiBold.ttf
-      #     weight: 600
-      #   - asset: assets/fonts/Poppins-Bold.ttf
-      #     weight: 700
+  # fonts:
+  #   - family: Poppins
+

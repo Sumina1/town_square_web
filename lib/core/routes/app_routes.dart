@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:townsquare/features/activities/presentation/screen/todays_activiies_webdesign.dart';
+import 'package:townsquare/features/activities/presentation/screen/todays_activities_mobile_design.dart';
 
 class AppRoutes {
   static const String initial = '/';
@@ -10,15 +11,19 @@ class AppRoutes {
     switch (settings.name) {
       case initial:
         return MaterialPageRoute(
-          builder: (_) => const TodaysActivitiesWebdesign(),
+          builder: (_) => const TodaysActivitiesMobileDesign(),
         );
-      
+
       case todaysActivitiesWeb:
         return MaterialPageRoute(
-          builder: (_) =>   const TodaysActivitiesWebdesign(),
+          builder: (_) => const TodaysActivitiesWebdesign(),
         );
-        
-     
+
+      case todaysActivities:
+        return MaterialPageRoute(
+          builder: (_) => const TodaysActivitiesMobileDesign(),
+        );
+
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
@@ -29,4 +34,4 @@ class AppRoutes {
         );
     }
   }
-} 
+}

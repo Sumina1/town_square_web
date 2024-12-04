@@ -13,8 +13,7 @@ class RightBanner extends StatelessWidget {
       padding: EdgeInsets.all(16),
       child: Column(
         children: [
-          
-          BannerWidget(
+          const BannerWidget(
             title: 'You’re close to your goal!',
             description: 'Join more sport activities to collect more points',
             buttonText1: 'Join now',
@@ -22,15 +21,17 @@ class RightBanner extends StatelessWidget {
             progress: '27',
           ),
           SizedBox(height: 16.h),
-          ImageBanner(
+          const ImageBanner(
             title: 'Weekly workshops for kids',
-            description: 'Sign up for early access to weekly activities for your kids full of learning and fun!',
+            description:
+                'Sign up for early access to weekly activities for your kids full of learning and fun!',
             buttonText: 'Learn more',
           ),
           SizedBox(height: 16.h),
-          ImageBanner(
+          const ImageBanner(
             title: 'Popular events near you!',
-            description: 'Unleash the fun! Explore the world of exciting events happening near you.',
+            description:
+                'Unleash the fun! Explore the world of exciting events happening near you.',
             buttonText: 'See more',
           ),
         ],

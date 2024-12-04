@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:percent_indicator/percent_indicator.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:townsquare/core/widget/text_field.dart';
+
 class BannerWidget extends StatelessWidget {
   final String title;
   final String description;
@@ -8,7 +10,8 @@ class BannerWidget extends StatelessWidget {
   final String buttonText2;
   final String progress;
 
-  BannerWidget({
+  const BannerWidget({
+    super.key,
     required this.title,
     required this.description,
     required this.buttonText1,
@@ -27,63 +30,62 @@ class BannerWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
+          BuildText(
+            text: title,
+            fontSize: 20.sp,
+            fontWeight: FontWeight.w500,
           ),
           SizedBox(height: 16.h),
-          Text(description, style: TextStyle(fontSize: 14.sp)),
+          BuildText(
+            text: description,
+            fontSize: 14.sp,
+          ),
           SizedBox(height: 16.h),
           Row(
             children: [
-              Column(children: [
-                 Row(
+              Column(
                 children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Text(buttonText1),
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.black,
-                    ),
-                  ),
-                  SizedBox(width: 8.w),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Text(buttonText2),
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.black,
-                    ),
+                  Row(
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                        ),
+                        child: BuildText(text: buttonText1),
+                      ),
+                      SizedBox(width: 8.w),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: BuildText(text: buttonText2),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-
-
-            
-              ],),
-                Center(
-            child: CircularPercentIndicator(
-              radius: 40.r,
-              lineWidth: 8.r,
-              animation: true,
-              percent: int.parse(progress) / 100, // Assuming progress is out of 100
-              center: Text(
-                '$progress%',
-                style: TextStyle(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w500,
+              Center(
+                child: CircularPercentIndicator(
+                  radius: 40.r,
+                  lineWidth: 8.r,
+                  animation: true,
+                  percent: int.parse(progress) /
+                      100, // Assuming progress is out of 100
+                  center: BuildText(
+                    text: '$progress%',
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  backgroundColor: Colors.white.withOpacity(0.3),
+                  progressColor: Colors.white,
+                  circularStrokeCap: CircularStrokeCap.round,
                 ),
-              ),
-              backgroundColor: Colors.white.withOpacity(0.3),
-              progressColor: Colors.white,
-              circularStrokeCap: CircularStrokeCap.round,
-            ),
-          )
-             
-              
+              )
             ],
           ),
           SizedBox(height: 16.h),
-        
         ],
       ),
     );

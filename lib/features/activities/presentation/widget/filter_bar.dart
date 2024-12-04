@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:townsquare/core/widget/text_field.dart';
 
 class FilterBar extends StatelessWidget {
   const FilterBar({super.key});
@@ -10,19 +11,22 @@ class FilterBar extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          FilterChip(label: Text('All'), onSelected: (_) {}),
+          FilterChip(label: const BuildText(text: 'All'), onSelected: (_) {}),
           SizedBox(width: 8.w),
-          FilterChip(label: Text('Sports'), onSelected: (_) {}),
+          FilterChip(
+              label: const BuildText(text: 'Sports'), onSelected: (_) {}),
           SizedBox(width: 8.w),
-          FilterChip(label: Text('Food'), onSelected: (_) {}),
+          FilterChip(label: const BuildText(text: 'Food'), onSelected: (_) {}),
           SizedBox(width: 8.w),
-          FilterChip(label: Text('Kids'), onSelected: (_) {}),
+          FilterChip(label: const BuildText(text: 'Kids'), onSelected: (_) {}),
           SizedBox(width: 8.w),
-          FilterChip(label: Text('Creative'), onSelected: (_) {}),
+          FilterChip(
+              label: const BuildText(text: 'Creative'), onSelected: (_) {}),
           SizedBox(width: 8.w),
-          FilterChip(label: Text('Popular'), onSelected: (_) {}),
+          FilterChip(
+              label: const BuildText(text: 'Popular'), onSelected: (_) {}),
           SizedBox(width: 8.w),
-          FilterChip(label: Text('Calm'), onSelected: (_) {}),
+          FilterChip(label: const BuildText(text: 'Calm'), onSelected: (_) {}),
         ],
       ),
     );
