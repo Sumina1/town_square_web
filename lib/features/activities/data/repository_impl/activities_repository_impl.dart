@@ -4,25 +4,61 @@ import '../../domain/repository/activities_repository.dart';
 class ActivitiesRepositoryImpl implements ActivitiesRepository {
   @override
   Future<List<ActivityEntity>> getActivities() async {
-    // TODO: Replace with actual API call
+    // Simulating API delay
+    await Future.delayed(const Duration(milliseconds: 500));
+
     return [
-      ActivityEntity(
+      const ActivityEntity(
         id: '1',
-        title: 'Morning Yoga',
-        category: 'Sports',
-        time: DateTime.now().add(const Duration(hours: 1)),
-        durationMinutes: 60,
-        location: 'Central Park',
-        availableSpots: 5,
-        price: 15.0,
+        time: '08:00',
+        duration: '60 min',
+        title: 'Beach Yoga',
+        location: 'La Playa de la Rada',
+        spotsLeft: 8,
+        price: 9.0,
+        intensity: 'light',
+        categories: ['Sports'],
       ),
-      // Add more mock activities...
+      const ActivityEntity(
+        id: '2',
+        time: '13:15',
+        duration: '60 min',
+        title: 'Standing Tapas Lunch',
+        location: 'Casa Marina',
+        spotsLeft: 8,
+        price: 15.0,
+        intensity: '',
+        categories: ['Food'],
+      ),
+      const ActivityEntity(
+        id: '3',
+        time: '15:00',
+        duration: 'Drop-in until 20:00',
+        title: 'Kids LEGO Club',
+        location: 'La Bloqueria',
+        spotsLeft: 5,
+        price: 10.0,
+        intensity: '',
+        categories: ['Kids'],
+        childcare: true,
+        workspace: true,
+      ),
+      const ActivityEntity(
+        id: '4',
+        time: '16:30',
+        duration: '90 min',
+        title: 'Pottery Workshop',
+        location: 'Arte Studio',
+        spotsLeft: 3,
+        price: 25.0,
+        intensity: '',
+        categories: ['Creative'],
+      ),
     ];
   }
 
   @override
   Future<void> joinActivity(String activityId) async {
-    // TODO: Implement actual API call
     await Future.delayed(const Duration(seconds: 1));
   }
-} 
+}

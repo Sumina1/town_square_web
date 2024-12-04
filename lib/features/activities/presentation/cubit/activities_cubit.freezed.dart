@@ -21,7 +21,9 @@ mixin _$ActivitiesState {
   ActivitiesStatus get status => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ActivitiesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ActivitiesStateCopyWith<ActivitiesState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +51,8 @@ class _$ActivitiesStateCopyWithImpl<$Res, $Val extends ActivitiesState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ActivitiesState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,6 +105,8 @@ class __$$ActivitiesStateImplCopyWithImpl<$Res>
       _$ActivitiesStateImpl _value, $Res Function(_$ActivitiesStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ActivitiesState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -186,7 +192,9 @@ class _$ActivitiesStateImpl extends _ActivitiesState {
       status,
       errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ActivitiesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ActivitiesStateImplCopyWith<_$ActivitiesStateImpl> get copyWith =>
@@ -210,8 +218,11 @@ abstract class _ActivitiesState extends ActivitiesState {
   ActivitiesStatus get status;
   @override
   String? get errorMessage;
+
+  /// Create a copy of ActivitiesState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ActivitiesStateImplCopyWith<_$ActivitiesStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

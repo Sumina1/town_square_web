@@ -11,11 +11,11 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
 
   ActivitiesCubit(this._repository) : super(const ActivitiesState());
 
-  final List<String> categories = ['all', 'Sports', 'Food', 'Kids', 'Creative'];
+  final List<String> categories = ['All', 'Sports', 'Food', 'Kids', 'Creative'];
 
   Future<void> loadActivities() async {
     emit(state.copyWith(status: ActivitiesStatus.loading));
-    
+
     try {
       final activities = await _repository.getActivities();
       emit(state.copyWith(
@@ -37,11 +37,11 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
   Future<void> joinActivity(String activityId) async {
     try {
       await _repository.joinActivity(activityId);
-      await loadActivities(); // Reload activities to get updated spots
+      await loadActivities();
     } catch (e) {
       emit(state.copyWith(
         errorMessage: e.toString(),
       ));
     }
   }
-} 
+}

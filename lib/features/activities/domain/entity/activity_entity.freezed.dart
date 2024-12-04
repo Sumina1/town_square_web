@@ -17,15 +17,20 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ActivityEntity {
   String get id => throw _privateConstructorUsedError;
+  String get time => throw _privateConstructorUsedError;
+  String get duration => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  String get category => throw _privateConstructorUsedError;
-  DateTime get time => throw _privateConstructorUsedError;
-  int get durationMinutes => throw _privateConstructorUsedError;
   String get location => throw _privateConstructorUsedError;
-  int get availableSpots => throw _privateConstructorUsedError;
+  int get spotsLeft => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
+  String get intensity => throw _privateConstructorUsedError;
+  List<String> get categories => throw _privateConstructorUsedError;
+  bool get childcare => throw _privateConstructorUsedError;
+  bool get workspace => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ActivityEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ActivityEntityCopyWith<ActivityEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -38,13 +43,16 @@ abstract class $ActivityEntityCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
+      String time,
+      String duration,
       String title,
-      String category,
-      DateTime time,
-      int durationMinutes,
       String location,
-      int availableSpots,
-      double price});
+      int spotsLeft,
+      double price,
+      String intensity,
+      List<String> categories,
+      bool childcare,
+      bool workspace});
 }
 
 /// @nodoc
@@ -57,51 +65,68 @@ class _$ActivityEntityCopyWithImpl<$Res, $Val extends ActivityEntity>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ActivityEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
-    Object? title = null,
-    Object? category = null,
     Object? time = null,
-    Object? durationMinutes = null,
+    Object? duration = null,
+    Object? title = null,
     Object? location = null,
-    Object? availableSpots = null,
+    Object? spotsLeft = null,
     Object? price = null,
+    Object? intensity = null,
+    Object? categories = null,
+    Object? childcare = null,
+    Object? workspace = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      time: null == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as String,
+      duration: null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
-      time: null == time
-          ? _value.time
-          : time // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      durationMinutes: null == durationMinutes
-          ? _value.durationMinutes
-          : durationMinutes // ignore: cast_nullable_to_non_nullable
-              as int,
       location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String,
-      availableSpots: null == availableSpots
-          ? _value.availableSpots
-          : availableSpots // ignore: cast_nullable_to_non_nullable
+      spotsLeft: null == spotsLeft
+          ? _value.spotsLeft
+          : spotsLeft // ignore: cast_nullable_to_non_nullable
               as int,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
+      intensity: null == intensity
+          ? _value.intensity
+          : intensity // ignore: cast_nullable_to_non_nullable
+              as String,
+      categories: null == categories
+          ? _value.categories
+          : categories // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      childcare: null == childcare
+          ? _value.childcare
+          : childcare // ignore: cast_nullable_to_non_nullable
+              as bool,
+      workspace: null == workspace
+          ? _value.workspace
+          : workspace // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -116,13 +141,16 @@ abstract class _$$ActivityEntityImplCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
+      String time,
+      String duration,
       String title,
-      String category,
-      DateTime time,
-      int durationMinutes,
       String location,
-      int availableSpots,
-      double price});
+      int spotsLeft,
+      double price,
+      String intensity,
+      List<String> categories,
+      bool childcare,
+      bool workspace});
 }
 
 /// @nodoc
@@ -133,51 +161,68 @@ class __$$ActivityEntityImplCopyWithImpl<$Res>
       _$ActivityEntityImpl _value, $Res Function(_$ActivityEntityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ActivityEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
-    Object? title = null,
-    Object? category = null,
     Object? time = null,
-    Object? durationMinutes = null,
+    Object? duration = null,
+    Object? title = null,
     Object? location = null,
-    Object? availableSpots = null,
+    Object? spotsLeft = null,
     Object? price = null,
+    Object? intensity = null,
+    Object? categories = null,
+    Object? childcare = null,
+    Object? workspace = null,
   }) {
     return _then(_$ActivityEntityImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      time: null == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as String,
+      duration: null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
-      time: null == time
-          ? _value.time
-          : time // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      durationMinutes: null == durationMinutes
-          ? _value.durationMinutes
-          : durationMinutes // ignore: cast_nullable_to_non_nullable
-              as int,
       location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String,
-      availableSpots: null == availableSpots
-          ? _value.availableSpots
-          : availableSpots // ignore: cast_nullable_to_non_nullable
+      spotsLeft: null == spotsLeft
+          ? _value.spotsLeft
+          : spotsLeft // ignore: cast_nullable_to_non_nullable
               as int,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
+      intensity: null == intensity
+          ? _value.intensity
+          : intensity // ignore: cast_nullable_to_non_nullable
+              as String,
+      categories: null == categories
+          ? _value._categories
+          : categories // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      childcare: null == childcare
+          ? _value.childcare
+          : childcare // ignore: cast_nullable_to_non_nullable
+              as bool,
+      workspace: null == workspace
+          ? _value.workspace
+          : workspace // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -187,34 +232,52 @@ class __$$ActivityEntityImplCopyWithImpl<$Res>
 class _$ActivityEntityImpl implements _ActivityEntity {
   const _$ActivityEntityImpl(
       {required this.id,
-      required this.title,
-      required this.category,
       required this.time,
-      required this.durationMinutes,
+      required this.duration,
+      required this.title,
       required this.location,
-      required this.availableSpots,
-      required this.price});
+      required this.spotsLeft,
+      required this.price,
+      required this.intensity,
+      required final List<String> categories,
+      this.childcare = false,
+      this.workspace = false})
+      : _categories = categories;
 
   @override
   final String id;
   @override
+  final String time;
+  @override
+  final String duration;
+  @override
   final String title;
-  @override
-  final String category;
-  @override
-  final DateTime time;
-  @override
-  final int durationMinutes;
   @override
   final String location;
   @override
-  final int availableSpots;
+  final int spotsLeft;
   @override
   final double price;
+  @override
+  final String intensity;
+  final List<String> _categories;
+  @override
+  List<String> get categories {
+    if (_categories is EqualUnmodifiableListView) return _categories;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_categories);
+  }
+
+  @override
+  @JsonKey()
+  final bool childcare;
+  @override
+  @JsonKey()
+  final bool workspace;
 
   @override
   String toString() {
-    return 'ActivityEntity(id: $id, title: $title, category: $category, time: $time, durationMinutes: $durationMinutes, location: $location, availableSpots: $availableSpots, price: $price)';
+    return 'ActivityEntity(id: $id, time: $time, duration: $duration, title: $title, location: $location, spotsLeft: $spotsLeft, price: $price, intensity: $intensity, categories: $categories, childcare: $childcare, workspace: $workspace)';
   }
 
   @override
@@ -223,24 +286,43 @@ class _$ActivityEntityImpl implements _ActivityEntity {
         (other.runtimeType == runtimeType &&
             other is _$ActivityEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.category, category) ||
-                other.category == category) &&
             (identical(other.time, time) || other.time == time) &&
-            (identical(other.durationMinutes, durationMinutes) ||
-                other.durationMinutes == durationMinutes) &&
+            (identical(other.duration, duration) ||
+                other.duration == duration) &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.location, location) ||
                 other.location == location) &&
-            (identical(other.availableSpots, availableSpots) ||
-                other.availableSpots == availableSpots) &&
-            (identical(other.price, price) || other.price == price));
+            (identical(other.spotsLeft, spotsLeft) ||
+                other.spotsLeft == spotsLeft) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.intensity, intensity) ||
+                other.intensity == intensity) &&
+            const DeepCollectionEquality()
+                .equals(other._categories, _categories) &&
+            (identical(other.childcare, childcare) ||
+                other.childcare == childcare) &&
+            (identical(other.workspace, workspace) ||
+                other.workspace == workspace));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, category, time,
-      durationMinutes, location, availableSpots, price);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      time,
+      duration,
+      title,
+      location,
+      spotsLeft,
+      price,
+      intensity,
+      const DeepCollectionEquality().hash(_categories),
+      childcare,
+      workspace);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ActivityEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ActivityEntityImplCopyWith<_$ActivityEntityImpl> get copyWith =>
@@ -251,32 +333,44 @@ class _$ActivityEntityImpl implements _ActivityEntity {
 abstract class _ActivityEntity implements ActivityEntity {
   const factory _ActivityEntity(
       {required final String id,
+      required final String time,
+      required final String duration,
       required final String title,
-      required final String category,
-      required final DateTime time,
-      required final int durationMinutes,
       required final String location,
-      required final int availableSpots,
-      required final double price}) = _$ActivityEntityImpl;
+      required final int spotsLeft,
+      required final double price,
+      required final String intensity,
+      required final List<String> categories,
+      final bool childcare,
+      final bool workspace}) = _$ActivityEntityImpl;
 
   @override
   String get id;
   @override
+  String get time;
+  @override
+  String get duration;
+  @override
   String get title;
-  @override
-  String get category;
-  @override
-  DateTime get time;
-  @override
-  int get durationMinutes;
   @override
   String get location;
   @override
-  int get availableSpots;
+  int get spotsLeft;
   @override
   double get price;
   @override
-  @JsonKey(ignore: true)
+  String get intensity;
+  @override
+  List<String> get categories;
+  @override
+  bool get childcare;
+  @override
+  bool get workspace;
+
+  /// Create a copy of ActivityEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ActivityEntityImplCopyWith<_$ActivityEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -8,22 +8,25 @@ class ActivityCard extends StatelessWidget {
   final String location;
   final String price;
   final String spotsLeft;
-  final String intensity;
+  final String? intensity;
   final bool childcare;
-  final bool soldOut;
   final bool workspace;
+  final bool soldOut;
+  final String category;
 
-  ActivityCard({
+  const ActivityCard({
+    Key? key,
     required this.time,
     required this.activity,
     required this.location,
     required this.price,
     required this.spotsLeft,
-    this.intensity = '',
+    this.intensity,
     this.childcare = false,
-    this.soldOut = false,
     this.workspace = false,
-  });
+    this.soldOut = false,
+    required this.category,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +84,7 @@ class ActivityCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  if (intensity.isNotEmpty) ...[
+                  if (intensity?.isNotEmpty ?? false) ...[
                     SizedBox(width: 4.w),
                     Container(
                         padding: EdgeInsets.symmetric(
@@ -95,7 +98,7 @@ class ActivityCard extends StatelessWidget {
                           borderRadius: BorderRadius.circular(2),
                         ),
                         child: BuildText(
-                            text: intensity,
+                            text: intensity ?? '',
                             fontSize: 12.sp,
                             color: intensity == 'light'
                                 ? Color(0xFF65B5DB)

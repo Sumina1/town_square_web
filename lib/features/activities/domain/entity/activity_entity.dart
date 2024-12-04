@@ -6,12 +6,15 @@ part 'activity_entity.freezed.dart';
 class ActivityEntity with _$ActivityEntity {
   const factory ActivityEntity({
     required String id,
+    required String time,
+    required String duration,
     required String title,
-    required String category,
-    required DateTime time,
-    required int durationMinutes,
     required String location,
-    required int availableSpots,
+    required int spotsLeft,
     required double price,
+    required String intensity,
+    required List<String> categories,
+    @Default(false) bool childcare,
+    @Default(false) bool workspace,
   }) = _ActivityEntity;
-} 
+}

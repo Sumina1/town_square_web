@@ -15,5 +15,7 @@ class ActivitiesState with _$ActivitiesState {
 
   List<ActivityEntity> get filteredActivities => selectedCategory == 'all'
       ? activities
-      : activities.where((activity) => activity.category == selectedCategory).toList();
-} 
+      : activities
+          .where((activity) => activity.categories.contains(selectedCategory))
+          .toList();
+}
