@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:townsquare/core/widget/text_field.dart';
 
-class ActivityCard extends StatelessWidget {
+class ActivityCardWedDesign extends StatelessWidget {
   final String time;
   final String activity;
   final String location;
@@ -13,8 +13,9 @@ class ActivityCard extends StatelessWidget {
   final bool workspace;
   final bool soldOut;
   final String category;
+  final String duration;
 
-  const ActivityCard({
+  const ActivityCardWedDesign({
     Key? key,
     required this.time,
     required this.activity,
@@ -26,6 +27,7 @@ class ActivityCard extends StatelessWidget {
     this.workspace = false,
     this.soldOut = false,
     required this.category,
+    required this.duration,
   }) : super(key: key);
 
   @override
@@ -147,12 +149,25 @@ class ActivityCard extends StatelessWidget {
               BuildText(
                   text: price, fontSize: 20.sp, fontWeight: FontWeight.bold),
               SizedBox(height: 8.w),
-              ElevatedButton(
-                onPressed: soldOut ? null : () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
+              SizedBox(
+                child: ElevatedButton(
+                  onPressed: soldOut ? null : () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    padding: EdgeInsets.only(
+                        right: 16.w, bottom: 8.h, left: 16.w, top: 8.h),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(4.r),
+                        bottomLeft: Radius.circular(4.r),
+                        topRight: Radius.circular(4.r),
+                        bottomRight: Radius.circular(4.r),
+                      ),
+                    ),
+                  ),
+                  child: BuildText(
+                      text: soldOut ? 'Sold Out' : 'Join', color: Colors.white),
                 ),
-                child: BuildText(text: soldOut ? 'Sold Out' : 'Join'),
               ),
             ],
           ),

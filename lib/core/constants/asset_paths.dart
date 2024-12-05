@@ -3,6 +3,10 @@ class AssetPaths {
 
   static const String logo = 'assets/images/logo.png';
   static const String profileUser = 'assets/images/profile.png';
+  static const String cardImage = 'assets/images/cardImage.png';
+  static const String eventImage = 'assets/images/img1.png';
+  static const String eventImage2 = 'assets/images/img2.png';
+  static const String eventImage3 = 'assets/images/img3.png';
 
   // SVG Icons
   static const String bellSvg = 'assets/svg/bell.svg';
@@ -24,4 +28,5 @@ class AssetPaths {
   static const String sliderSvg = 'assets/svg/sliders.svg';
   static const String profilePicture = 'assets/svg/profile.svg';
   static const String imageCircle = 'assets/svg/circle.svg';
+  static const String arrowBack = 'assets/svg/arrow-right-circle.svg';
 }

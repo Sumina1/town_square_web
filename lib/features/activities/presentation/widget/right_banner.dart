@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:townsquare/features/activities/presentation/widget/banner_widget.dart';
+import 'package:townsquare/features/activities/presentation/screen/todays_activities_mobile_design.dart';
+import 'package:townsquare/features/activities/presentation/widget/banner_widget_web.dart';
+import 'package:townsquare/features/activities/presentation/widget/event_card.dart';
 import 'package:townsquare/features/activities/presentation/widget/info_banner.dart';
 
 class RightBanner extends StatelessWidget {
@@ -9,12 +11,11 @@ class RightBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 300,
+      width: 300.w,
       padding: EdgeInsets.all(16),
       child: Column(
         children: [
-          
-          const BannerWidget(
+          const BannerWidgetForWeb(
             title: 'You’re close to your goal!',
             description: 'Join more sport activities to collect more points',
             buttonText1: 'Join now',
@@ -29,12 +30,7 @@ class RightBanner extends StatelessWidget {
             buttonText: 'Learn more',
           ),
           SizedBox(height: 16.h),
-          const ImageBanner(
-            title: 'Popular events near you!',
-            description:
-                'Unleash the fun! Explore the world of exciting events happening near you.',
-            buttonText: 'See more',
-          ),
+          EventCard()
         ],
       ),
     );

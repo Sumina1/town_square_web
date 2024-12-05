@@ -100,7 +100,19 @@ flutter:
     # Images
     - assets/images/
     - assets/svg/
-    
+  
+  fonts:
+    - family: SF-Pro
+      fonts:
+        - asset: assets/fonts/SF-Pro-Display-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/SF-Pro-Display-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/SF-Pro-Display-Semibold.ttf
+          weight: 600
+        - asset: assets/fonts/SF-Pro-Display-Bold.ttf
+          weight: 700
+
     # # Icons
     # - assets/icons/
     # # SVG
@@ -109,7 +121,5 @@ flutter:
     # # Animations
     # - assets/animations/
 
-  # Fonts
-  # fonts:
-  #   - family: Poppins
+
 

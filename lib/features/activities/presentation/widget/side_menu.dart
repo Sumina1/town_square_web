@@ -27,22 +27,35 @@ class SideMenu extends StatelessWidget {
           MenuOption(icon: AssetPaths.users, label: 'Communities'),
           MenuOption(icon: AssetPaths.bellSvg, label: 'Notifications'),
           SizedBox(height: 20.h),
-          ElevatedButton.icon(
-            onPressed: () {},
-            icon: const Icon(Icons.add),
-            label: const BuildText(text: 'Create'),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF76C8FF),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25.r),
+          SizedBox(
+            width: 220.w,
+            height: 45.h,
+            child: ElevatedButton.icon(
+              onPressed: () {},
+              icon: Icon(Icons.add, size: 24.w, color: Colors.black87),
+              label: Padding(
+                padding: EdgeInsets.only(left: 30.w),
+                child: BuildText(
+                  text: 'Create',
+                  color: Colors.black87,
+                  fontSize: 20.sp,
+                ),
               ),
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF76C8FF),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25.r),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
+                alignment: Alignment.centerLeft,
+              ),
             ),
-            // iconSpacing: 31,
           ),
-          SizedBox(height: 20.h),
+          SizedBox(height: 50.h),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(AssetPaths.profileUser, height: 36.h, width: 36.w),
               SizedBox(width: 16.w),
@@ -51,7 +64,7 @@ class SideMenu extends StatelessWidget {
                 color: Colors.white,
                 fontSize: 20.sp,
               ),
-              SizedBox(width: 20.w),
+              SizedBox(width: 50.w),
               SvgIcon(
                 assetPath: AssetPaths.moreVertical,
                 size: 24.w,

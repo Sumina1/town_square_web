@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:townsquare/core/widget/text_field.dart';
 
 class FilterBar extends StatelessWidget {
   final String selectedFilter;
@@ -25,11 +26,15 @@ class FilterBar extends StatelessWidget {
             padding: EdgeInsets.only(right: 8.w),
             child: AnimatedScale(
               duration: const Duration(milliseconds: 200),
-              scale: isSelected ? 1.05 : 1.0,
+              scale: isSelected ? 1.0 : 1.0,
               child: FilterChip(
                 selected: isSelected,
                 selectedColor: const Color(0xFFBAA1C8),
-                label: Text(filter == 'all' ? 'All' : filter),
+                label: BuildText(
+                  text: filter == 'all' ? 'All' : filter,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                ),
                 backgroundColor: const Color(0xFFEEE1F5),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(6.r),

@@ -45,7 +45,7 @@ class BuildText extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         style: TextStyle(
             fontSize: fontSize,
-            fontFamily: 'Poppins',
+            fontFamily: family!.isEmpty ? 'SF-Pro' : family,
             letterSpacing: letterSpacing,
             height: height,
             color: color ?? Colors.black,

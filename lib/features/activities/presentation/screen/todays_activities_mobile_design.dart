@@ -5,29 +5,14 @@ import 'package:intl/intl.dart';
 
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:townsquare/core/constants/asset_paths.dart';
+import 'package:townsquare/core/constants/color.dart';
 import 'package:townsquare/core/widget/text_field.dart';
 import 'package:townsquare/core/widgets/svg_icon.dart';
 
 import 'package:townsquare/features/activities/presentation/cubit/activities_cubit.dart';
+import 'package:townsquare/features/activities/presentation/widget/appText_field.dart';
+import 'package:townsquare/features/activities/presentation/widget/banner_widget_web.dart';
 import 'package:townsquare/features/activities/presentation/widget/filter_bar.dart';
-
-class _Constants {
-  static const backgroundColor = Color(0xFFFBFBFB);
-  static const bannerColor = Color(0xFFBAE6FD);
-  static const progressColor = Color(0xFF6ABEF6);
-
-  static const intensityColors = {
-    'light': Color(0xFFD5F1FF),
-    'medium': Color(0xFFF3E8FF),
-    'high': Color(0xFFFFEAD1),
-  };
-
-  static const intensityTextColors = {
-    'light': Color(0xFF65B5DB),
-    'medium': Color(0xFFC9A4F2),
-    'high': Color(0xFFDC974F),
-  };
-}
 
 class TodaysActivitiesMobileDesign extends StatelessWidget {
   const TodaysActivitiesMobileDesign({super.key});
@@ -46,7 +31,7 @@ class TodaysActivitiesView extends StatelessWidget {
     return BlocBuilder<ActivitiesCubit, ActivitiesState>(
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: _Constants.backgroundColor,
+          backgroundColor: Constants.backgroundColor,
           appBar: AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
@@ -112,7 +97,7 @@ class TodaysActivitiesView extends StatelessWidget {
                               children: [
                                 const BannerWidget(),
                                 SizedBox(height: 16.h),
-                                const SearchBar(),
+                                const AppTextField(),
                                 SizedBox(height: 16.h),
                                 FilterBar(
                                   selectedFilter: state.selectedCategory,
@@ -282,7 +267,7 @@ class BannerWidget extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
       decoration: BoxDecoration(
-        color: _Constants.bannerColor,
+        color: Constants.bannerColor,
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Row(
@@ -369,7 +354,7 @@ class BannerWidget extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
             backgroundColor: const Color(0xFFFFFFFF),
-            progressColor: _Constants.progressColor,
+            progressColor: Constants.progressColor,
             circularStrokeCap: CircularStrokeCap.round,
           )
         ],
@@ -483,8 +468,9 @@ class ActivityCard extends StatelessWidget {
               SizedBox(height: 4.w),
               BuildText(
                 text: activity,
-                fontSize: 14.sp,
+                fontSize: 18.sp,
                 fontWeight: FontWeight.w700,
+                family: 'SF-Pro',
               ),
               SizedBox(height: 4.w),
               Row(
@@ -535,13 +521,13 @@ class ActivityCard extends StatelessWidget {
                     padding:
                         EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.w),
                     decoration: BoxDecoration(
-                      color: _Constants.intensityColors[intensity],
+                      color: Constants.intensityColors[intensity],
                       borderRadius: BorderRadius.circular(2),
                     ),
                     child: BuildText(
                       text: intensity,
                       fontSize: 10.sp,
-                      color: _Constants.intensityTextColors[intensity],
+                      color: Constants.intensityTextColors[intensity],
                     ),
                   ),
                   if (childcare)
@@ -588,7 +574,7 @@ class ActivityCard extends StatelessWidget {
                   backgroundColor: Colors.black,
                   padding:
                       EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-                  minimumSize: Size(58.w, 33.h),
+                  minimumSize: Size(58.w, 40.h),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(6.r),
