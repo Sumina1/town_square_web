@@ -24,7 +24,8 @@ class MyApp extends StatelessWidget {
         getIt<ActivitiesRepository>(),
       )..loadActivities(),
       child: ScreenUtilInit(
-  designSize: kIsWeb ? const Size(1400, 1000) : const Size(390, 770),        minTextAdapt: true,
+        designSize: kIsWeb ? const Size(1024, 771) : const Size(390, 770),
+        minTextAdapt: true,
         splitScreenMode: true,
         child: MaterialApp(
           navigatorKey: getIt<NavigationService>().navigatorKey,

@@ -11,6 +11,7 @@ class ActivitiesState with _$ActivitiesState {
     @Default('all') String selectedCategory,
     @Default(ActivitiesStatus.initial) ActivitiesStatus status,
     String? errorMessage,
+    @Default(0) int selectedIndex,
   }) = _ActivitiesState;
 
   List<ActivityEntity> get filteredActivities => selectedCategory == 'all'

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:townsquare/features/activities/presentation/screen/todays_activiies_webdesign.dart';
 import 'package:townsquare/features/activities/presentation/screen/todays_activities_mobile_design.dart';
@@ -11,7 +12,9 @@ class AppRoutes {
     switch (settings.name) {
       case initial:
         return MaterialPageRoute(
-          builder: (_) => const TodaysActivitiesWebdesign(),
+          builder: (_) => kIsWeb
+              ? const TodaysActivitiesWebdesign()
+              : const TodaysActivitiesMobileDesign(),
         );
 
       case todaysActivitiesWeb:

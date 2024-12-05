@@ -34,6 +34,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/calendar.svg
   String get calendar => 'assets/svg/calendar.svg';
 
+  /// File path: assets/svg/circle.svg
+  String get circle => 'assets/svg/circle.svg';
+
   /// File path: assets/svg/filter.svg
   String get filter => 'assets/svg/filter.svg';
 
@@ -71,6 +74,7 @@ class $AssetsSvgGen {
   List<String> get values => [
         bell,
         calendar,
+        circle,
         filter,
         mapPin,
         map,

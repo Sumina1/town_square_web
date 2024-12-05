@@ -28,6 +28,10 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
     }
   }
 
+  void onTabSelected(int index) {
+    emit(state.copyWith(selectedIndex: index));
+  }
+
   void changeCategory(String category) {
     emit(state.copyWith(selectedCategory: category));
   }

@@ -4,6 +4,8 @@ import 'package:townsquare/core/constants/asset_paths.dart';
 import 'package:townsquare/core/widget/text_field.dart';
 
 class EventCard extends StatelessWidget {
+  const EventCard({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -65,14 +67,16 @@ class EventCard extends StatelessWidget {
                       left: 15,
                       child: CircleAvatar(
                         radius: 21.r,
-                        backgroundImage: const AssetImage(AssetPaths.eventImage2),
+                        backgroundImage:
+                            const AssetImage(AssetPaths.eventImage2),
                       ),
                     ),
                     Positioned(
                       left: 30,
                       child: CircleAvatar(
                         radius: 21.r,
-                        backgroundImage: const AssetImage(AssetPaths.eventImage3),
+                        backgroundImage:
+                            const AssetImage(AssetPaths.eventImage3),
                       ),
                     ),
                   ],
@@ -81,19 +85,17 @@ class EventCard extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.white,
+                    backgroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
                     padding: EdgeInsets.symmetric(horizontal: 62, vertical: 10),
                   ),
-                  child: Text(
-                    'See More',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
+                  child: BuildText(
+                    text: 'See More',
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black,
                   ),
                 ),
               ],

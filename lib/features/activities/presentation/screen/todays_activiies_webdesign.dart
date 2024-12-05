@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:townsquare/core/constants/asset_paths.dart';
 import 'package:townsquare/core/widget/text_field.dart';
 import 'package:townsquare/core/widgets/svg_icon.dart';
-import 'package:townsquare/features/activities/presentation/screen/todays_activities_mobile_design.dart';
-import 'package:townsquare/features/activities/presentation/widget/activity_card_wed_design.dart';
+import 'package:townsquare/features/activities/presentation/screen/dash_indicator.dart';
+
 import 'package:townsquare/features/activities/presentation/widget/appText_field.dart';
 
-import 'package:townsquare/features/activities/presentation/widget/filter_bar.dart';
-
-import 'package:townsquare/features/activities/presentation/widget/right_banner.dart';
-import 'package:townsquare/features/activities/presentation/widget/side_menu.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:townsquare/features/activities/presentation/cubit/activities_cubit.dart';
+import 'package:townsquare/features/activities/presentation/widget/index.dart';
 
 class TodaysActivitiesWebdesign extends StatelessWidget {
   const TodaysActivitiesWebdesign({super.key});
@@ -89,8 +86,6 @@ class TodaysActivitiesWebdesign extends StatelessWidget {
                                       ],
                                     ),
                                     SizedBox(height: 16.h),
-
-                                    // SizedBox(height: 8.h),
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
