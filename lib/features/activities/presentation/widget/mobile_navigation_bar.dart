@@ -21,9 +21,8 @@ class MobileNavigationBar extends StatelessWidget {
                 IconButton(
                   icon: SvgIcon(
                     assetPath: AssetPaths.calendarSvg,
-                    color: state.selectedIndex == 0
-                        ? const Color(0xFFBAE6FD)
-                        : Colors.black,
+                    color:
+                        state.selectedIndex == 0 ? Colors.blue : Colors.black,
                   ),
                   onPressed: () =>
                       context.read<ActivitiesCubit>().onTabSelected(0),
@@ -31,9 +30,8 @@ class MobileNavigationBar extends StatelessWidget {
                 IconButton(
                   icon: SvgIcon(
                     assetPath: AssetPaths.mapSvg,
-                    color: state.selectedIndex == 1
-                        ? const Color(0xFFBAE6FD)
-                        : Colors.black,
+                    color:
+                        state.selectedIndex == 1 ? Colors.blue : Colors.black,
                   ),
                   onPressed: () =>
                       context.read<ActivitiesCubit>().onTabSelected(1),
@@ -43,7 +41,7 @@ class MobileNavigationBar extends StatelessWidget {
                       context.read<ActivitiesCubit>().onTabSelected(2),
                   shape: const CircleBorder(),
                   backgroundColor: state.selectedIndex == 2
-                      ? Colors.blue // Darker shade when selected
+                      ? const Color(0xFF90CDE3) // Darker shade when selected
                       : const Color(0xFFBAE6FD),
                   child: SizedBox(
                     width: 35.w,
@@ -54,9 +52,8 @@ class MobileNavigationBar extends StatelessWidget {
                 IconButton(
                   icon: SvgIcon(
                     assetPath: AssetPaths.users,
-                    color: state.selectedIndex == 3
-                        ? const Color(0xFFBAE6FD)
-                        : Colors.black,
+                    color:
+                        state.selectedIndex == 3 ? Colors.blue : Colors.black,
                   ),
                   onPressed: () =>
                       context.read<ActivitiesCubit>().onTabSelected(3),
@@ -64,9 +61,8 @@ class MobileNavigationBar extends StatelessWidget {
                 IconButton(
                   icon: SvgIcon(
                     assetPath: AssetPaths.starSvg,
-                    color: state.selectedIndex == 4
-                        ? const Color(0xFFBAE6FD)
-                        : Colors.black,
+                    color:
+                        state.selectedIndex == 4 ? Colors.blue : Colors.black,
                   ),
                   onPressed: () =>
                       context.read<ActivitiesCubit>().onTabSelected(4),

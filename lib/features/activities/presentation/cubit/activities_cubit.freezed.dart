@@ -20,7 +20,7 @@ mixin _$ActivitiesState {
   String get selectedCategory => throw _privateConstructorUsedError;
   ActivitiesStatus get status => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
-  int get selectedIndex => throw _privateConstructorUsedError;
+  int? get selectedIndex => throw _privateConstructorUsedError;
 
   /// Create a copy of ActivitiesState
   /// with the given fields replaced by the non-null parameter values.
@@ -40,7 +40,7 @@ abstract class $ActivitiesStateCopyWith<$Res> {
       String selectedCategory,
       ActivitiesStatus status,
       String? errorMessage,
-      int selectedIndex});
+      int? selectedIndex});
 }
 
 /// @nodoc
@@ -62,7 +62,7 @@ class _$ActivitiesStateCopyWithImpl<$Res, $Val extends ActivitiesState>
     Object? selectedCategory = null,
     Object? status = null,
     Object? errorMessage = freezed,
-    Object? selectedIndex = null,
+    Object? selectedIndex = freezed,
   }) {
     return _then(_value.copyWith(
       activities: null == activities
@@ -81,10 +81,10 @@ class _$ActivitiesStateCopyWithImpl<$Res, $Val extends ActivitiesState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      selectedIndex: null == selectedIndex
+      selectedIndex: freezed == selectedIndex
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -102,7 +102,7 @@ abstract class _$$ActivitiesStateImplCopyWith<$Res>
       String selectedCategory,
       ActivitiesStatus status,
       String? errorMessage,
-      int selectedIndex});
+      int? selectedIndex});
 }
 
 /// @nodoc
@@ -122,7 +122,7 @@ class __$$ActivitiesStateImplCopyWithImpl<$Res>
     Object? selectedCategory = null,
     Object? status = null,
     Object? errorMessage = freezed,
-    Object? selectedIndex = null,
+    Object? selectedIndex = freezed,
   }) {
     return _then(_$ActivitiesStateImpl(
       activities: null == activities
@@ -141,10 +141,10 @@ class __$$ActivitiesStateImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      selectedIndex: null == selectedIndex
+      selectedIndex: freezed == selectedIndex
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -157,7 +157,7 @@ class _$ActivitiesStateImpl extends _ActivitiesState {
       this.selectedCategory = 'all',
       this.status = ActivitiesStatus.initial,
       this.errorMessage,
-      this.selectedIndex = 0})
+      this.selectedIndex = null})
       : _activities = activities,
         super._();
 
@@ -180,7 +180,7 @@ class _$ActivitiesStateImpl extends _ActivitiesState {
   final String? errorMessage;
   @override
   @JsonKey()
-  final int selectedIndex;
+  final int? selectedIndex;
 
   @override
   String toString() {
@@ -228,7 +228,7 @@ abstract class _ActivitiesState extends ActivitiesState {
       final String selectedCategory,
       final ActivitiesStatus status,
       final String? errorMessage,
-      final int selectedIndex}) = _$ActivitiesStateImpl;
+      final int? selectedIndex}) = _$ActivitiesStateImpl;
   const _ActivitiesState._() : super._();
 
   @override
@@ -240,7 +240,7 @@ abstract class _ActivitiesState extends ActivitiesState {
   @override
   String? get errorMessage;
   @override
-  int get selectedIndex;
+  int? get selectedIndex;
 
   /// Create a copy of ActivitiesState
   /// with the given fields replaced by the non-null parameter values.

@@ -5,16 +5,14 @@ import 'package:intl/intl.dart';
 import 'package:townsquare/core/constants/app_color_constant.dart';
 
 import 'package:townsquare/core/constants/asset_paths.dart';
-import 'package:townsquare/core/constants/color.dart';
+
 import 'package:townsquare/core/widget/text_field.dart';
 import 'package:townsquare/core/widgets/svg_icon.dart';
 import 'package:townsquare/features/activities/presentation/cubit/activities_cubit.dart';
 import 'package:townsquare/features/activities/presentation/screen/dash_indicator.dart';
 import 'package:townsquare/features/activities/presentation/widget/appText_field.dart';
-import 'package:townsquare/features/activities/presentation/widget/filter_bar.dart';
-import 'package:townsquare/features/activities/presentation/widget/mobile_activity_card.dart';
-import 'package:townsquare/features/activities/presentation/widget/mobile_banner_widget.dart';
-import 'package:townsquare/features/activities/presentation/widget/mobile_navigation_bar.dart';
+
+import 'package:townsquare/features/activities/presentation/widget/index.dart';
 
 class TodaysActivitiesMobileDesign extends StatelessWidget {
   const TodaysActivitiesMobileDesign({super.key});
