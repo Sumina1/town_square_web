@@ -30,7 +30,7 @@ class TodaysActivitiesWebdesign extends StatelessWidget {
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.only(
-                      left: 30.w, right: 30.w, bottom: 16.h, top: 50.h),
+                      left: 50.w, right: 30.w, bottom: 16.h, top: 50.h),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -55,7 +55,7 @@ class TodaysActivitiesWebdesign extends StatelessWidget {
                       BuildText(
                         text: 'This week in Estepona',
                         fontSize: 20.sp,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
                         family: 'SF-Pro',
                       ),
                       state.status == ActivitiesStatus.loading
@@ -112,7 +112,7 @@ class TodaysActivitiesWebdesign extends StatelessWidget {
                                                     ? 50.h
                                                     : state.filteredActivities
                                                             .length *
-                                                        115.h,
+                                                        145.h,
                                                 width: 1.w,
                                                 child: CustomPaint(
                                                   painter:
@@ -136,7 +136,7 @@ class TodaysActivitiesWebdesign extends StatelessWidget {
                                                     style: TextStyle(
                                                       fontSize: 14.97.sp,
                                                       fontWeight:
-                                                          FontWeight.w500,
+                                                          FontWeight.w600,
                                                       color: Colors.black,
                                                     ),
                                                     children: [
@@ -191,6 +191,7 @@ class TodaysActivitiesWebdesign extends StatelessWidget {
                                                                 state.filteredActivities[
                                                                     index];
                                                             return ActivityCardWedDesign(
+                                                              id: activity.id,
                                                               category: state
                                                                   .selectedCategory,
                                                               time:

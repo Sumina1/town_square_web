@@ -8,7 +8,7 @@ class EventCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 282.w,
-      height: 312.h,
+      height: 390.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.r),
         image: const DecorationImage(
@@ -20,12 +20,12 @@ class EventCard extends StatelessWidget {
         children: [
           Positioned(
             top: 29.h,
-            left: 14.51.w,
+            left: -12.51.w,
             child: Container(
               width: 253.49.w,
               child: BuildText(
                 text: 'Popular events near you!',
-                fontSize: 20.sp,
+                fontSize: 17.sp,
                 fontWeight: FontWeight.w500,
                 color: Colors.white,
                 textAlign: TextAlign.center,
@@ -33,14 +33,14 @@ class EventCard extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 192.h,
-            left: 24.24.w,
+            top: 230.h,
+            left: -2.24.w,
             child: Container(
               width: 233.52.w,
               child: BuildText(
                 text:
-                    'Unleash the fun! Explore the world of exciting events happening near you.',
-                fontSize: 14.sp,
+                    ' Unleash the fun! Explore the world of exciting events happening near you.',
+                fontSize: 12.sp,
                 fontWeight: FontWeight.w500,
                 color: Colors.white,
                 textAlign: TextAlign.center,
@@ -65,14 +65,16 @@ class EventCard extends StatelessWidget {
                       left: 15,
                       child: CircleAvatar(
                         radius: 21.r,
-                        backgroundImage: const AssetImage(AssetPaths.eventImage2),
+                        backgroundImage:
+                            const AssetImage(AssetPaths.eventImage2),
                       ),
                     ),
                     Positioned(
                       left: 30,
                       child: CircleAvatar(
                         radius: 21.r,
-                        backgroundImage: const AssetImage(AssetPaths.eventImage3),
+                        backgroundImage:
+                            const AssetImage(AssetPaths.eventImage3),
                       ),
                     ),
                   ],

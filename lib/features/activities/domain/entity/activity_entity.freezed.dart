@@ -28,9 +28,7 @@ mixin _$ActivityEntity {
   bool get childcare => throw _privateConstructorUsedError;
   bool get workspace => throw _privateConstructorUsedError;
 
-  /// Create a copy of ActivityEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ActivityEntityCopyWith<ActivityEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -65,8 +63,6 @@ class _$ActivityEntityCopyWithImpl<$Res, $Val extends ActivityEntity>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ActivityEntity
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -161,8 +157,6 @@ class __$$ActivityEntityImplCopyWithImpl<$Res>
       _$ActivityEntityImpl _value, $Res Function(_$ActivityEntityImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ActivityEntity
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -320,9 +314,7 @@ class _$ActivityEntityImpl implements _ActivityEntity {
       childcare,
       workspace);
 
-  /// Create a copy of ActivityEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ActivityEntityImplCopyWith<_$ActivityEntityImpl> get copyWith =>
@@ -366,11 +358,8 @@ abstract class _ActivityEntity implements ActivityEntity {
   bool get childcare;
   @override
   bool get workspace;
-
-  /// Create a copy of ActivityEntity
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ActivityEntityImplCopyWith<_$ActivityEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

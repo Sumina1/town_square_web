@@ -12,7 +12,7 @@ class RightBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 300.w,
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.fromLTRB(15.w, 0, 32.w, 10.h),
       child: Column(
         children: [
           const BannerWidgetForWeb(

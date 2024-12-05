@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:townsquare/core/widget/text_field.dart';
+import 'package:townsquare/features/activities/presentation/cubit/activities_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ActivityCardWedDesign extends StatelessWidget {
+  final String id;
   final String time;
   final String activity;
   final String location;
@@ -17,6 +20,7 @@ class ActivityCardWedDesign extends StatelessWidget {
 
   const ActivityCardWedDesign({
     Key? key,
+    required this.id,
     required this.time,
     required this.activity,
     required this.location,
@@ -52,7 +56,8 @@ class ActivityCardWedDesign extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              BuildText(text: time, fontSize: 14.sp),
+              BuildText(
+                  text: time, fontSize: 14.sp, fontWeight: FontWeight.w500),
               SizedBox(height: 4.w),
               BuildText(
                   text: activity, fontSize: 20.sp, fontWeight: FontWeight.bold),
@@ -150,23 +155,49 @@ class ActivityCardWedDesign extends StatelessWidget {
                   text: price, fontSize: 20.sp, fontWeight: FontWeight.bold),
               SizedBox(height: 8.w),
               SizedBox(
-                child: ElevatedButton(
-                  onPressed: soldOut ? null : () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    padding: EdgeInsets.only(
-                        right: 16.w, bottom: 8.h, left: 16.w, top: 8.h),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(4.r),
-                        bottomLeft: Radius.circular(4.r),
-                        topRight: Radius.circular(4.r),
-                        bottomRight: Radius.circular(4.r),
+                child: BlocBuilder<ActivitiesCubit, ActivitiesState>(
+                  builder: (context, state) {
+                    final isJoining = state.joiningActivityId != null && 
+                                        state.joiningActivityId == id;
+                    final hasJoined = state.joinedActivities.contains(id);
+                    final noSpotsLeft = spotsLeft == '0 spots left';
+                    
+                    return ElevatedButton(
+                      onPressed: (hasJoined || noSpotsLeft || isJoining) ? null : () {
+                        context.read<ActivitiesCubit>().joinActivity(id);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black,
+                        padding: EdgeInsets.only(
+                            right: 16.w, bottom: 8.h, left: 16.w, top: 8.h),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(4.r),
+                            bottomLeft: Radius.circular(4.r),
+                            topRight: Radius.circular(4.r),
+                            bottomRight: Radius.circular(4.r),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  child: BuildText(
-                      text: soldOut ? 'Sold Out' : 'Join', color: Colors.white),
+                      child: isJoining 
+                        ? SizedBox(
+                            width: 20.w,
+                            height: 20.h,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                              strokeWidth: 2,
+                            ),
+                          )
+                        : BuildText(
+                            text: noSpotsLeft 
+                              ? 'Sold Out' 
+                              : hasJoined 
+                                ? 'Joined' 
+                                : 'Join',
+                            color: Colors.white,
+                          ),
+                    );
+                  },
                 ),
               ),
             ],

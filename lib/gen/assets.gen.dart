@@ -12,6 +12,19 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/cardImage.png
+  AssetGenImage get cardImage =>
+      const AssetGenImage('assets/images/cardImage.png');
+
+  /// File path: assets/images/img1.png
+  AssetGenImage get img1 => const AssetGenImage('assets/images/img1.png');
+
+  /// File path: assets/images/img2.png
+  AssetGenImage get img2 => const AssetGenImage('assets/images/img2.png');
+
+  /// File path: assets/images/img3.png
+  AssetGenImage get img3 => const AssetGenImage('assets/images/img3.png');
+
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
@@ -22,17 +35,24 @@ class $AssetsImagesGen {
   AssetGenImage get profile => const AssetGenImage('assets/images/profile.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [logo, map, profile];
+  List<AssetGenImage> get values =>
+      [cardImage, img1, img2, img3, logo, map, profile];
 }
 
 class $AssetsSvgGen {
   const $AssetsSvgGen();
+
+  /// File path: assets/svg/arrow-right-circle.svg
+  String get arrowRightCircle => 'assets/svg/arrow-right-circle.svg';
 
   /// File path: assets/svg/bell.svg
   String get bell => 'assets/svg/bell.svg';
 
   /// File path: assets/svg/calendar.svg
   String get calendar => 'assets/svg/calendar.svg';
+
+  /// File path: assets/svg/circle.svg
+  String get circle => 'assets/svg/circle.svg';
 
   /// File path: assets/svg/filter.svg
   String get filter => 'assets/svg/filter.svg';
@@ -69,8 +89,10 @@ class $AssetsSvgGen {
 
   /// List of all assets
   List<String> get values => [
+        arrowRightCircle,
         bell,
         calendar,
+        circle,
         filter,
         mapPin,
         map,
