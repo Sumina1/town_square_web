@@ -160,7 +160,7 @@ class ActivityCardWedDesign extends StatelessWidget {
                     final isJoining = state.joiningActivityId != null && 
                                         state.joiningActivityId == id;
                     final hasJoined = state.joinedActivities.contains(id);
-                    final noSpotsLeft = spotsLeft == '0 spots left';
+                    final noSpotsLeft = int.parse(spotsLeft.split(' ')[0]) <= 0;
                     
                     return ElevatedButton(
                       onPressed: (hasJoined || noSpotsLeft || isJoining) ? null : () {
@@ -195,6 +195,8 @@ class ActivityCardWedDesign extends StatelessWidget {
                                 ? 'Joined' 
                                 : 'Join',
                             color: Colors.white,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w500,
                           ),
                     );
                   },
