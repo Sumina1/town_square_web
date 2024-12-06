@@ -10,7 +10,7 @@ class EventCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 282.w,
-      height: 312.h,
+      height: 350.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.r),
         image: const DecorationImage(
@@ -21,13 +21,13 @@ class EventCard extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            top: 29.h,
-            left: 14.51.w,
-            child: Container(
+            top: 25.h,
+            left: -12.51.w,
+            child: SizedBox(
               width: 253.49.w,
               child: BuildText(
                 text: 'Popular events near you!',
-                fontSize: 20.sp,
+                fontSize: 17.sp,
                 fontWeight: FontWeight.w500,
                 color: Colors.white,
                 textAlign: TextAlign.center,
@@ -35,14 +35,14 @@ class EventCard extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 192.h,
-            left: 24.24.w,
-            child: Container(
+            top: 230.h,
+            left: -2.24.w,
+            child: SizedBox(
               width: 233.52.w,
               child: BuildText(
                 text:
-                    'Unleash the fun! Explore the world of exciting events happening near you.',
-                fontSize: 14.sp,
+                    ' Unleash the fun! Explore the world of exciting events happening near you.',
+                fontSize: 12.sp,
                 fontWeight: FontWeight.w500,
                 color: Colors.white,
                 textAlign: TextAlign.center,
@@ -87,7 +87,7 @@ class EventCard extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(8.r),
                     ),
                     padding: EdgeInsets.symmetric(horizontal: 62, vertical: 10),
                   ),

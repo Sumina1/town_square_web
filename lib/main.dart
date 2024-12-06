@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         getIt<ActivitiesRepository>(),
       )..loadActivities(),
       child: ScreenUtilInit(
-        designSize: kIsWeb ? const Size(1024, 771) : const Size(390, 770),
+        designSize: MediaQuery.of(context).size,
         minTextAdapt: true,
         splitScreenMode: true,
         child: MaterialApp(
@@ -39,6 +39,15 @@ class MyApp extends StatelessWidget {
                 ),
             primaryColor: const Color(0xFF13B9FF),
           ),
+          builder: (context, child) {
+            return MediaQuery(
+              data: MediaQuery.of(context).copyWith(
+                textScaleFactor:
+                    MediaQuery.of(context).size.width < 600 ? 1.0 : 1.2,
+              ),
+              child: child!,
+            );
+          },
           initialRoute: AppRoutes.initial,
           onGenerateRoute: AppRoutes.onGenerateRoute,
         ),

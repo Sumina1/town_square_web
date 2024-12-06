@@ -7,7 +7,7 @@ import 'package:townsquare/core/constants/app_color_constant.dart';
 import 'package:townsquare/core/constants/asset_paths.dart';
 
 import 'package:townsquare/core/widget/text_field.dart';
-import 'package:townsquare/core/widgets/svg_icon.dart';
+import 'package:townsquare/core/widget/svg_icon.dart';
 import 'package:townsquare/features/activities/presentation/cubit/activities_cubit.dart';
 import 'package:townsquare/features/activities/presentation/screen/dash_indicator.dart';
 import 'package:townsquare/features/activities/presentation/widget/appText_field.dart';

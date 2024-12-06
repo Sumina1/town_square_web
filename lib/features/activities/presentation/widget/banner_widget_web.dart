@@ -22,7 +22,7 @@ class BannerWidgetForWeb extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16.r),
+      padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 15.h),
       decoration: BoxDecoration(
         color: Color(0xFFBAE6FD),
         borderRadius: BorderRadius.circular(10.r),
@@ -32,7 +32,7 @@ class BannerWidgetForWeb extends StatelessWidget {
         children: [
           BuildText(
             text: title,
-            fontSize: 20.sp,
+            fontSize: 18.sp,
             fontWeight: FontWeight.w500,
           ),
           SizedBox(height: 16.h),
@@ -45,7 +45,7 @@ class BannerWidgetForWeb extends StatelessWidget {
                   children: [
                     BuildText(
                       text: description,
-                      fontSize: 14.sp,
+                      fontSize: 12.sp,
                     ),
                     SizedBox(height: 16.h),
                     Row(
@@ -54,20 +54,16 @@ class BannerWidgetForWeb extends StatelessWidget {
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.black,
-                            padding: EdgeInsets.only(
-                                top: 4.h, bottom: 4.h, left: 8.w, right: 8.w),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 12.w, vertical: -1.h),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(4.r),
-                                bottomLeft: Radius.circular(4.r),
-                                topRight: Radius.circular(4.r),
-                                bottomRight: Radius.circular(4.r),
-                              ),
+                              borderRadius: BorderRadius.circular(12.r),
                             ),
                           ),
                           child: BuildText(
                             text: buttonText1,
                             color: Colors.white,
+                            fontSize: 11.sp,
                           ),
                         ),
                         SizedBox(width: 8.w),
@@ -76,19 +72,15 @@ class BannerWidgetForWeb extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.black,
                             padding: EdgeInsets.symmetric(
-                                horizontal: 8.w, vertical: 4.h),
+                                horizontal: 12.w, vertical: -1.h),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(4.r),
-                                bottomLeft: Radius.circular(4.r),
-                                topRight: Radius.circular(4.r),
-                                bottomRight: Radius.circular(4.r),
-                              ),
+                              borderRadius: BorderRadius.circular(12.r),
                             ),
                           ),
                           child: BuildText(
                             text: buttonText2,
                             color: Colors.white,
+                            fontSize: 11.sp,
                           ),
                         ),
                       ],
@@ -113,7 +105,7 @@ class BannerWidgetForWeb extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(height: 16.h),
+          // SizedBox(height: 16.h),
         ],
       ),
     );

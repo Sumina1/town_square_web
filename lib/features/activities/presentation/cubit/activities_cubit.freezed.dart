@@ -19,12 +19,12 @@ mixin _$ActivitiesState {
   List<ActivityEntity> get activities => throw _privateConstructorUsedError;
   String get selectedCategory => throw _privateConstructorUsedError;
   ActivitiesStatus get status => throw _privateConstructorUsedError;
+  List<String> get joinedActivities => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   int? get selectedIndex => throw _privateConstructorUsedError;
+  String? get joiningActivityId => throw _privateConstructorUsedError;
 
-  /// Create a copy of ActivitiesState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ActivitiesStateCopyWith<ActivitiesState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -39,8 +39,10 @@ abstract class $ActivitiesStateCopyWith<$Res> {
       {List<ActivityEntity> activities,
       String selectedCategory,
       ActivitiesStatus status,
+      List<String> joinedActivities,
       String? errorMessage,
-      int? selectedIndex});
+      int? selectedIndex,
+      String? joiningActivityId});
 }
 
 /// @nodoc
@@ -53,16 +55,16 @@ class _$ActivitiesStateCopyWithImpl<$Res, $Val extends ActivitiesState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ActivitiesState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? activities = null,
     Object? selectedCategory = null,
     Object? status = null,
+    Object? joinedActivities = null,
     Object? errorMessage = freezed,
     Object? selectedIndex = freezed,
+    Object? joiningActivityId = freezed,
   }) {
     return _then(_value.copyWith(
       activities: null == activities
@@ -77,6 +79,10 @@ class _$ActivitiesStateCopyWithImpl<$Res, $Val extends ActivitiesState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ActivitiesStatus,
+      joinedActivities: null == joinedActivities
+          ? _value.joinedActivities
+          : joinedActivities // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -85,6 +91,10 @@ class _$ActivitiesStateCopyWithImpl<$Res, $Val extends ActivitiesState>
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int?,
+      joiningActivityId: freezed == joiningActivityId
+          ? _value.joiningActivityId
+          : joiningActivityId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -101,8 +111,10 @@ abstract class _$$ActivitiesStateImplCopyWith<$Res>
       {List<ActivityEntity> activities,
       String selectedCategory,
       ActivitiesStatus status,
+      List<String> joinedActivities,
       String? errorMessage,
-      int? selectedIndex});
+      int? selectedIndex,
+      String? joiningActivityId});
 }
 
 /// @nodoc
@@ -113,16 +125,16 @@ class __$$ActivitiesStateImplCopyWithImpl<$Res>
       _$ActivitiesStateImpl _value, $Res Function(_$ActivitiesStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ActivitiesState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? activities = null,
     Object? selectedCategory = null,
     Object? status = null,
+    Object? joinedActivities = null,
     Object? errorMessage = freezed,
     Object? selectedIndex = freezed,
+    Object? joiningActivityId = freezed,
   }) {
     return _then(_$ActivitiesStateImpl(
       activities: null == activities
@@ -137,6 +149,10 @@ class __$$ActivitiesStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ActivitiesStatus,
+      joinedActivities: null == joinedActivities
+          ? _value._joinedActivities
+          : joinedActivities // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -145,6 +161,10 @@ class __$$ActivitiesStateImplCopyWithImpl<$Res>
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int?,
+      joiningActivityId: freezed == joiningActivityId
+          ? _value.joiningActivityId
+          : joiningActivityId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -156,9 +176,12 @@ class _$ActivitiesStateImpl extends _ActivitiesState {
       {final List<ActivityEntity> activities = const [],
       this.selectedCategory = 'all',
       this.status = ActivitiesStatus.initial,
+      final List<String> joinedActivities = const [],
       this.errorMessage,
-      this.selectedIndex = null})
+      this.selectedIndex = null,
+      this.joiningActivityId})
       : _activities = activities,
+        _joinedActivities = joinedActivities,
         super._();
 
   final List<ActivityEntity> _activities;
@@ -176,15 +199,27 @@ class _$ActivitiesStateImpl extends _ActivitiesState {
   @override
   @JsonKey()
   final ActivitiesStatus status;
+  final List<String> _joinedActivities;
+  @override
+  @JsonKey()
+  List<String> get joinedActivities {
+    if (_joinedActivities is EqualUnmodifiableListView)
+      return _joinedActivities;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_joinedActivities);
+  }
+
   @override
   final String? errorMessage;
   @override
   @JsonKey()
   final int? selectedIndex;
+  @override
+  final String? joiningActivityId;
 
   @override
   String toString() {
-    return 'ActivitiesState(activities: $activities, selectedCategory: $selectedCategory, status: $status, errorMessage: $errorMessage, selectedIndex: $selectedIndex)';
+    return 'ActivitiesState(activities: $activities, selectedCategory: $selectedCategory, status: $status, joinedActivities: $joinedActivities, errorMessage: $errorMessage, selectedIndex: $selectedIndex, joiningActivityId: $joiningActivityId)';
   }
 
   @override
@@ -197,10 +232,14 @@ class _$ActivitiesStateImpl extends _ActivitiesState {
             (identical(other.selectedCategory, selectedCategory) ||
                 other.selectedCategory == selectedCategory) &&
             (identical(other.status, status) || other.status == status) &&
+            const DeepCollectionEquality()
+                .equals(other._joinedActivities, _joinedActivities) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.selectedIndex, selectedIndex) ||
-                other.selectedIndex == selectedIndex));
+                other.selectedIndex == selectedIndex) &&
+            (identical(other.joiningActivityId, joiningActivityId) ||
+                other.joiningActivityId == joiningActivityId));
   }
 
   @override
@@ -209,12 +248,12 @@ class _$ActivitiesStateImpl extends _ActivitiesState {
       const DeepCollectionEquality().hash(_activities),
       selectedCategory,
       status,
+      const DeepCollectionEquality().hash(_joinedActivities),
       errorMessage,
-      selectedIndex);
+      selectedIndex,
+      joiningActivityId);
 
-  /// Create a copy of ActivitiesState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ActivitiesStateImplCopyWith<_$ActivitiesStateImpl> get copyWith =>
@@ -227,8 +266,10 @@ abstract class _ActivitiesState extends ActivitiesState {
       {final List<ActivityEntity> activities,
       final String selectedCategory,
       final ActivitiesStatus status,
+      final List<String> joinedActivities,
       final String? errorMessage,
-      final int? selectedIndex}) = _$ActivitiesStateImpl;
+      final int? selectedIndex,
+      final String? joiningActivityId}) = _$ActivitiesStateImpl;
   const _ActivitiesState._() : super._();
 
   @override
@@ -238,14 +279,15 @@ abstract class _ActivitiesState extends ActivitiesState {
   @override
   ActivitiesStatus get status;
   @override
+  List<String> get joinedActivities;
+  @override
   String? get errorMessage;
   @override
   int? get selectedIndex;
-
-  /// Create a copy of ActivitiesState
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get joiningActivityId;
+  @override
+  @JsonKey(ignore: true)
   _$$ActivitiesStateImplCopyWith<_$ActivitiesStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

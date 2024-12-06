@@ -4,15 +4,17 @@ enum ActivitiesStatus { initial, loading, success, failure }
 
 @freezed
 class ActivitiesState with _$ActivitiesState {
-  const ActivitiesState._();
-
   const factory ActivitiesState({
     @Default([]) List<ActivityEntity> activities,
     @Default('all') String selectedCategory,
     @Default(ActivitiesStatus.initial) ActivitiesStatus status,
+    @Default([]) List<String> joinedActivities,
     String? errorMessage,
     @Default(null) int? selectedIndex,
+    String? joiningActivityId,
   }) = _ActivitiesState;
+
+  const ActivitiesState._();
 
   List<ActivityEntity> get filteredActivities => selectedCategory == 'all'
       ? activities

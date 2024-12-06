@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../domain/repository/activities_repository.dart';
@@ -12,7 +14,9 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
   ActivitiesCubit(this._repository) : super(const ActivitiesState());
 
   Future<void> loadActivities() async {
-    emit(state.copyWith(status: ActivitiesStatus.loading));
+    if (state.joiningActivityId == null) {
+      emit(state.copyWith(status: ActivitiesStatus.loading));
+    }
 
     try {
       final activities = await _repository.getActivities();
@@ -37,12 +41,22 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
   }
 
   Future<void> joinActivity(String activityId) async {
+    emit(state.copyWith(joiningActivityId: activityId));
+    
     try {
       await _repository.joinActivity(activityId);
-      await loadActivities();
+      final activities = await _repository.getActivities();
+      final updatedJoinedActivities = List<String>.from(state.joinedActivities)..add(activityId);
+      emit(state.copyWith(
+        activities: activities,
+        joinedActivities: updatedJoinedActivities,
+        joiningActivityId: null,
+        status: ActivitiesStatus.success,
+      ));
     } catch (e) {
       emit(state.copyWith(
         errorMessage: e.toString(),
+        joiningActivityId: null,
       ));
     }
   }

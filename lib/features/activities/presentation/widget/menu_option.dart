@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:townsquare/core/widget/text_field.dart';
-import 'package:townsquare/core/widgets/svg_icon.dart';
+import 'package:townsquare/core/widget/svg_icon.dart';
 
 class MenuOption extends StatelessWidget {
   final String icon;

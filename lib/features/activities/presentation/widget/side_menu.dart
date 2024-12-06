@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:townsquare/core/constants/asset_paths.dart';
 import 'package:townsquare/core/widget/text_field.dart';
-import 'package:townsquare/core/widgets/svg_icon.dart';
+import 'package:townsquare/core/widget/svg_icon.dart';
 import 'package:townsquare/features/activities/presentation/widget/menu_option.dart';
 
 class SideMenu extends StatelessWidget {

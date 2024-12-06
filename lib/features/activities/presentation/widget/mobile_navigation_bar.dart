@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:townsquare/core/constants/asset_paths.dart';
-import 'package:townsquare/core/widgets/svg_icon.dart';
+import 'package:townsquare/core/widget/svg_icon.dart';
 import 'package:townsquare/features/activities/presentation/cubit/activities_cubit.dart';
 
 class MobileNavigationBar extends StatelessWidget {

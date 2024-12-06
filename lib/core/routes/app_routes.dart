@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:townsquare/features/activities/presentation/screen/todays_activiies_webdesign.dart';
 import 'package:townsquare/features/activities/presentation/screen/todays_activities_mobile_design.dart';
+import 'package:townsquare/core/utils/responsive_layout.dart';
 
 class AppRoutes {
   static const String initial = '/';
@@ -12,9 +13,11 @@ class AppRoutes {
     switch (settings.name) {
       case initial:
         return MaterialPageRoute(
-          builder: (_) => kIsWeb
-              ? const TodaysActivitiesWebdesign()
-              : const TodaysActivitiesMobileDesign(),
+          builder: (_) => const ResponsiveLayout(
+            mobile: TodaysActivitiesMobileDesign(),
+            tablet: TodaysActivitiesMobileDesign(),
+            desktop: TodaysActivitiesWebdesign(),
+          ),
         );
 
       case todaysActivitiesWeb:

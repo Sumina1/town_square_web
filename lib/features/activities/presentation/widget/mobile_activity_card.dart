@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart' as screenutil;
 import 'package:townsquare/core/constants/app_color_constant.dart';
 import 'package:townsquare/core/constants/asset_paths.dart';
 import 'package:townsquare/core/widget/text_field.dart';
-import 'package:townsquare/core/widgets/svg_icon.dart';
+import 'package:townsquare/core/widget/svg_icon.dart';
 import 'package:townsquare/features/activities/presentation/cubit/activities_cubit.dart';
+import 'package:townsquare/core/utils/responsive_layout.dart';
 
 class MobileActivityCard extends StatelessWidget {
   final String time;
@@ -33,9 +34,14 @@ class MobileActivityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceType = ResponsiveLayout.getDeviceType(context);
+    final isTablet = deviceType == DeviceType.tablet;
+    
     return Container(
-      padding: EdgeInsets.all(16.w),
-      margin: EdgeInsets.symmetric(vertical: 8.h),
+      padding: EdgeInsets.all(isTablet ? 24.w : 16.w),
+      margin: EdgeInsets.symmetric(
+        vertical: isTablet ? 12.h : 8.h,
+      ),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10.r),

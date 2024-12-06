@@ -29,6 +29,7 @@ class FilterBar extends StatelessWidget {
               scale: isSelected ? 1.0 : 1.0,
               child: FilterChip(
                 selected: isSelected,
+                showCheckmark: false,
                 selectedColor: const Color(0xFFBAA1C8),
                 label: BuildText(
                   text: filter == 'all' ? 'All' : filter,
@@ -41,11 +42,7 @@ class FilterBar extends StatelessWidget {
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
                 onSelected: (_) {
-                  if (isSelected) {
-                    onFilterSelected('all');
-                  } else {
-                    onFilterSelected(filter);
-                  }
+                  onFilterSelected(filter);
                 },
               ),
             ),
