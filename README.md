@@ -1,16 +1,60 @@
-# townsquare
+# TownSquare Activities App
 
-A new Flutter project.
+A Flutter application for managing and joining activities in Estepona.
 
-## Getting Started
+## How to Run
 
-This project is a starting point for a Flutter application.
+1. Ensure you have Flutter installed (version 3.0.0 or higher)
+2. Clone the repository
+3. Install dependencies:
+   ```bash
+   flutter pub get
+   ```
+4. Generate required files:
+   ```bash
+   flutter pub run build_runner build
+   ```
+5. Run the app:
+   ```bash
+   flutter run
+   ```
 
-A few resources to get you started if this is your first Flutter project:
+## Assumptions Made
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Activities data would eventually come from an API (currently mocked)
+- Users are already authenticated (auth flow not implemented)
+- Category filters are fixed and not dynamic
+- Activity spots are managed server-side (not implemented locally)
+- Mobile and web layouts need different designs for optimal UX
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Future Improvements
+
+With more time, I would:
+
+1. Technical Improvements:
+   - Implement proper error handling and retry mechanisms
+   - Add unit and widget tests
+   - Implement proper state persistence
+   - Add proper API integration
+
+2. Feature Improvements:
+   - Add activity search functionality
+   - Implement activity booking flow
+   - Add user profile management
+   - Add activity details page
+   - Implement notifications system
+
+3. UX Improvements:
+   - Add loading skeletons
+   - Improve filter animations
+   - Add pull-to-refresh
+   - Implement infinite scroll for activities
+   - Add better error states and recovery options
+
+## Architecture
+
+The project follows Clean Architecture principles with:
+- Feature-based folder structure
+- BLoC pattern for state management
+- Repository pattern for data handling
+- Dependency injection for better testability
