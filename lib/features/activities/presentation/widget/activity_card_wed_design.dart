@@ -157,15 +157,17 @@ class ActivityCardWedDesign extends StatelessWidget {
               SizedBox(
                 child: BlocBuilder<ActivitiesCubit, ActivitiesState>(
                   builder: (context, state) {
-                    final isJoining = state.joiningActivityId != null && 
-                                        state.joiningActivityId == id;
+                    final isJoining = state.joiningActivityId != null &&
+                        state.joiningActivityId == id;
                     final hasJoined = state.joinedActivities.contains(id);
                     final noSpotsLeft = spotsLeft == '0 spots left';
-                    
+
                     return ElevatedButton(
-                      onPressed: (hasJoined || noSpotsLeft || isJoining) ? null : () {
-                        context.read<ActivitiesCubit>().joinActivity(id);
-                      },
+                      onPressed: (hasJoined || noSpotsLeft || isJoining)
+                          ? null
+                          : () {
+                              context.read<ActivitiesCubit>().joinActivity(id);
+                            },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,
                         padding: EdgeInsets.only(
@@ -179,23 +181,23 @@ class ActivityCardWedDesign extends StatelessWidget {
                           ),
                         ),
                       ),
-                      child: isJoining 
-                        ? SizedBox(
-                            width: 20.w,
-                            height: 20.h,
-                            child: CircularProgressIndicator(
+                      child: isJoining
+                          ? SizedBox(
+                              width: 20.w,
+                              height: 20.h,
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                                strokeWidth: 2,
+                              ),
+                            )
+                          : BuildText(
+                              text: noSpotsLeft
+                                  ? 'Sold Out'
+                                  : hasJoined
+                                      ? 'Joined'
+                                      : 'Join',
                               color: Colors.white,
-                              strokeWidth: 2,
                             ),
-                          )
-                        : BuildText(
-                            text: noSpotsLeft 
-                              ? 'Sold Out' 
-                              : hasJoined 
-                                ? 'Joined' 
-                                : 'Join',
-                            color: Colors.white,
-                          ),
                     );
                   },
                 ),

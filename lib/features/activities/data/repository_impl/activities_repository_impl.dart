@@ -66,19 +66,11 @@ class ActivitiesRepositoryImpl implements ActivitiesRepository {
 
   @override
   Future<void> joinActivity(String activityId) async {
-    await Future.delayed(const Duration(seconds: 1));
-    final activityIndex =
-        _activities.indexWhere((activity) => activity.id == activityId);
-
+    final activityIndex = _activities.indexWhere((activity) => activity.id == activityId);
     if (activityIndex != -1 && _activities[activityIndex].spotsLeft > 0) {
-      final updatedActivity = _activities[activityIndex].copyWith(
+      _activities[activityIndex] = _activities[activityIndex].copyWith(
         spotsLeft: _activities[activityIndex].spotsLeft - 1,
       );
-
-      _activities = List<ActivityEntity>.from(_activities)
-        ..[activityIndex] = updatedActivity;
-    } else {
-      throw Exception('No spots available');
     }
   }
 }
